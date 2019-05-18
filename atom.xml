@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-19T15:15:42.216Z</updated>
+  <updated>2019-05-16T11:53:32.824Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,166 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/04/19/hello-world/"/>
-    <id>http://yoursite.com/2019/04/19/hello-world/</id>
-    <published>2019-04-19T15:15:42.216Z</published>
-    <updated>2019-04-19T15:15:42.216Z</updated>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/16/JDBC/"/>
+    <id>http://yoursite.com/2019/05/16/JDBC/</id>
+    <published>2019-05-16T09:30:32.153Z</published>
+    <updated>2019-05-16T11:53:32.824Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><h5 id="全称"><a href="#全称" class="headerlink" title="全称"></a>全称</h5><p>Java DataBase Connection（Java 数据库连接）</p><h5 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h5><p>JDBC API 使用 Java 的反射机制来实现 Java 程序和 JDBC 驱动的松耦合</p><h5 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h5><ol><li><p>Statement接口</p></li><li><p>ResultSet接口</p></li><li><p>PreparedStatement接口</p><ul><li>表示预编译的 SQL 语句的对象</li><li>SQL 语句被预编译并存储在 <code>PreparedStatement</code> 对象中。然后可以使用此对象多次<strong>高效</strong>地执行该语句</li></ul></li></ol><h5 id="PreparedStatement接口相比Statement接口的优点"><a href="#PreparedStatement接口相比Statement接口的优点" class="headerlink" title="PreparedStatement接口相比Statement接口的优点"></a>PreparedStatement接口相比Statement接口的优点</h5><ol><li><p>参数设置<br>Statement 需要进行字符串拼接，可读性和维护性比较差<br>PreparedStatement 使用参数设置，可读性好，不易犯错</p></li><li><p>性能表现</p><p>PreparedStatement有预编译机制，性能比Statement更快</p></li><li><p>防止SQL注入式攻击</p></li></ol><h5 id="execute与executeUpdate的区别"><a href="#execute与executeUpdate的区别" class="headerlink" title="execute与executeUpdate的区别"></a>execute与executeUpdate的区别</h5><h6 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h6><p>​    都可以执行增加，删除，修改</p><p>不同点</p><ol><li><p>execute可以执行查询语句，然后通过getResultSet，把结果集取出来；</p><p>executeUpdate不能执行查询语句</p></li><li><p>execute返回boolean类型，true表示执行的是查询语句，false表示执行的是insert,delete,update；<br>executeUpdate返回的是int，表示有多少条数据受到了影响</p></li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;h1 id=&quot;JDBC&quot;&gt;&lt;a href=&quot;#JDBC&quot; class=&quot;headerlink&quot; title=&quot;JDBC&quot;&gt;&lt;/a&gt;JDBC&lt;/h1&gt;&lt;h5 id=&quot;全称&quot;&gt;&lt;a href=&quot;#全称&quot; class=&quot;headerlink&quot; title=&quot;全称&quot;&gt;&lt;/a&gt;全称&lt;/h
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/16/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/05/16/多线程/</id>
+    <published>2019-05-16T02:19:09.474Z</published>
+    <updated>2019-05-16T09:30:42.575Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h5 id="一、线程与进程的5个阶段"><a href="#一、线程与进程的5个阶段" class="headerlink" title="一、线程与进程的5个阶段"></a>一、线程与进程的5个阶段</h5><p>创建、就绪、运行、阻塞、终止</p><h5 id="二、实现多线程的方法（3种）"><a href="#二、实现多线程的方法（3种）" class="headerlink" title="二、实现多线程的方法（3种）"></a>二、实现多线程的方法（3种）</h5><ol><li>扩展java.lang.Thread类</li><li>实现java.lang.Runable接口</li><li>实现Callable接口，并与 Future、线程池结合使用</li></ol><h5 id="三、分类介绍"><a href="#三、分类介绍" class="headerlink" title="三、分类介绍"></a>三、分类介绍</h5><ol><li><h6 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread1</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="keyword">super</span>();</span><br><span class="line"><span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">System.out.println(name+<span class="string">"运行："</span>+i);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">sleep((<span class="keyword">long</span>) (Math.random()*<span class="number">10</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试类</span></span><br><span class="line"><span class="keyword">package</span> com.test.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">Thread1 thread1 = <span class="keyword">new</span> Thread1(<span class="string">"jordan"</span>);</span><br><span class="line">Thread1 thread2 = <span class="keyword">new</span> Thread1(<span class="string">"kobe"</span>);</span><br><span class="line">thread1.start();</span><br><span class="line">thread2.start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>输出：</p><p>jordan运行：0<br>kobe运行：0<br>kobe运行：1<br>kobe运行：2<br>jordan运行：1<br>kobe运行：3<br>jordan运行：2<br>kobe运行：4<br>jordan运行：3<br>jordan运行：4</p><blockquote><p>注意：</p><ol><li>start() 方法的调用后并不是立即执行多线程代码，而是使得该线程变为可运行态（Runnable），什么时候运行是由操作系统决定的</li><li>从程序运行的结果可以发现，多线程程序是乱序执行。因此，只有乱序执行的代码才有必要设计为多线程</li><li>Thread.sleep() 方法调用目的是不让当前线程独自霸占该进程所获取的 CPU 资源，以留出一定时间给其他线程执行的机会</li><li>实际上所有的多线程代码执行顺序都是不确定的，每次执行的结果都是随机的</li><li>start 方法重复调用的话，会出现 java.lang.IllegalThreadStateException 异常</li></ol></blockquote><h6 id="2-实现Runable接口"><a href="#2-实现Runable接口" class="headerlink" title="2.实现Runable接口"></a>2.实现Runable接口</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread2</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="keyword">super</span>();</span><br><span class="line"><span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">System.out.println(name+<span class="string">"运行："</span>+i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">Thread.sleep((<span class="keyword">long</span>) (Math.random()*<span class="number">10</span>));</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试类</span></span><br><span class="line"><span class="keyword">package</span> com.test.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread2(<span class="string">"jordan"</span>)).start();</span><br><span class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread2(<span class="string">"kobe"</span>)).start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h5><p>如果一个类继承 Thread，则不适合资源共享。但是如果实现了 Runable 接口的话，则很容易的实现资源共享</p><h6 id="总结：（实现Runable接口继承Thread的优点）"><a href="#总结：（实现Runable接口继承Thread的优点）" class="headerlink" title="总结：（实现Runable接口继承Thread的优点）"></a>总结：（实现Runable接口继承Thread的优点）</h6><ol><li>适合多个相同的程序代码的线程去处理同一个资源</li><li>可以避免Java单继承的缺点</li><li>增加程序的健壮性，代码可以被多个线程共享，代码和数据共享</li><li>线程池只能放入实现 Runable 或 callable 类线程，不能直接放入继承 Thread 的类</li></ol><blockquote><p>注意：main 方法其实也是一个线程。在 java 中所以的线程都是同时启动的，至于什么时候，哪个先执行，完全看谁先得到 CPU 的资源</p></blockquote><h5 id="四、线程状态转换"><a href="#四、线程状态转换" class="headerlink" title="四、线程状态转换"></a>四、线程状态转换</h5><p>1、新建状态（New）：新创建了一个线程对象。</p><p>2、就绪状态（Runnable）：线程对象创建后，其他线程调用了该对象的 start() 方法。该状态的线程位于可运行线程池中，变得可运行，等待获取 CPU 的使用权。</p><p>3、运行状态（Running）：就绪状态的线程获取了 CPU，执行程序代码。</p><p>4、阻塞状态（Blocked）：阻塞状态是线程因为某种原因放弃 CPU 使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。阻塞的情况分三种：</p><p>（一）、等待阻塞：运行的线程执行 wait() 方法，JVM 会把该线程放入等待池中。(wait 会释放持有的锁)</p><p>（二）、同步阻塞：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则 JVM 会把该线程放入锁池中。</p><p>（三）、其他阻塞：运行的线程执行 sleep() 或 join() 方法，或者发出了 I/O 请求时，JVM 会把该线程置为阻塞状态。当 sleep() 状态超时、join() 等待线程终止或者超时、或者 I/O 处理完毕时，线程重新转入就绪状态。（注意, sleep 是不会释放持有的锁）</p><p>5、死亡状态（Dead）：线程执行完了或者因异常退出了 run() 方法，该线程结束生命周期。</p><h5 id="五、线程调度"><a href="#五、线程调度" class="headerlink" title="五、线程调度"></a>五、线程调度</h5><ol><li><p>调整线程优先级：Java 线程有优先级，优先级高的线程会获得较多的运行机会</p><p>Java 线程的优先级用整数表示，取值范围是 1~10，Thread 类有以下三个静态常量：</p><blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">static</span> <span class="keyword">int</span> MAX_PRIORITY</span><br><span class="line">   &gt;           <span class="comment">//线程可以具有的最高优先级，取值为10。</span></span><br><span class="line">&gt; <span class="keyword">static</span> <span class="keyword">int</span> MIN_PRIORITY</span><br><span class="line">   &gt;           <span class="comment">//线程可以具有的最低优先级，取值为1。</span></span><br><span class="line">&gt; <span class="keyword">static</span> <span class="keyword">int</span> NORM_PRIORITY</span><br><span class="line">   &gt;           <span class="comment">//分配给线程的默认优先级，取值为5。</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote></li></ol></li></ol><p>   Thread 类的 setPriority() 和 getPriority() 方法分别用来设置和获取线程的优先级</p><p>   每个线程都有默认的优先级。主线程的默认优先级为 Thread.NORM_PRIORITY</p><p>   线程的优先级有继承关系，比如 A 线程中创建了 B 线程，那么 B 将和 A 具有相同的优先级</p><p>   JVM 提供了 10 个线程优先级，但与常见的操作系统都不能很好的映射。如果希望程序能移植到各个操作系统中，应该仅仅使用 Thread 类有以下三个静态常量作为优先级，这样能保证同样的优先级采用了同样的调度方式</p><ol start="2"><li><p>线程睡眠（sleep()）:Thread()的方法，使线程转到阻塞状态，结束后，线程转入就绪（Runable）状态</p></li><li><p>线程等待（wait()）:Object()的方法，使线程等待，直到其他线程调用此对象的notify(all)()方法时方可唤醒此线程</p></li><li><p>线程让步（yield()）:Thread()的方法，暂停正在执行的线程，将执行让给有优先级相同或者更高的线程执行</p></li><li><p>线程加入（join()）:Thread()的方法，在当前线程调用其他线程的join()方法，当前线程转入阻塞状态，直到被调用的线程运行完毕，当前线程由阻塞状态转为就绪状态</p></li><li><p>线程唤醒（notify()）:Object()的方法，</p></li></ol><p>注意：Thread 中 suspend() 和 resume() 两个方法在 JDK1.5 中已经废除，不再介绍。因为有死锁倾向</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h2&gt;&lt;h5 id=&quot;一、线程与进程的5个阶段&quot;&gt;&lt;a href=&quot;#一、线程与进程的5个阶段&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/15/IO%E4%B8%8ENIO/"/>
+    <id>http://yoursite.com/2019/05/15/IO与NIO/</id>
+    <published>2019-05-15T10:16:12.284Z</published>
+    <updated>2019-05-15T10:16:12.286Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="IO与NIO"><a href="#IO与NIO" class="headerlink" title="IO与NIO"></a>IO与NIO</h2><h5 id="图谱"><a href="#图谱" class="headerlink" title="图谱"></a>图谱</h5><h5 id="1、IO流的分类"><a href="#1、IO流的分类" class="headerlink" title="1、IO流的分类"></a>1、IO流的分类</h5><ul><li>按照流向分类【输入流、输出流】</li><li>按照操作单元划分【字节流、字符流】</li><li>按照流的角色划分【节点流、处理流】</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;IO与NIO&quot;&gt;&lt;a href=&quot;#IO与NIO&quot; class=&quot;headerlink&quot; title=&quot;IO与NIO&quot;&gt;&lt;/a&gt;IO与NIO&lt;/h2&gt;&lt;h5 id=&quot;图谱&quot;&gt;&lt;a href=&quot;#图谱&quot; class=&quot;headerlink&quot; title=&quot;图谱&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/15/%E5%BC%82%E5%B8%B8/"/>
+    <id>http://yoursite.com/2019/05/15/异常/</id>
+    <published>2019-05-15T08:18:30.431Z</published>
+    <updated>2019-05-15T08:18:30.432Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h5 id="以下4种情况，finally不会被执行"><a href="#以下4种情况，finally不会被执行" class="headerlink" title="以下4种情况，finally不会被执行"></a>以下4种情况，finally不会被执行</h5><ol><li>在finally语句块中发生了异常</li><li>在前面的代码块中使用了System.exit()退出程序</li><li>程序所在的线程死亡</li><li>关闭CPU</li></ol><h5 id="常见异常"><a href="#常见异常" class="headerlink" title="常见异常"></a>常见异常</h5><h6 id="runtime-Exception"><a href="#runtime-Exception" class="headerlink" title="runtime Exception"></a>runtime Exception</h6><pre><code>1、 java.lang.ArrayIndexOutOfBoundsException</code></pre><p>​    数组索引越界异常。当对数组的索引值为负数或大于等于数组大小时抛出</p><p>​    2、java.lang.ArithmeticException</p><p>​    算术条件异常。譬如：整数除零等</p><p>​    3、java.lang.NullPointerException</p><p>​    空指针异常。当应用试图在要求使用对象的地方使用了 null 时，抛出该异常。譬如：调用 null 对象的实例方法、访问 null 对象的属性、计算 null 对象的长度、使用 throw 语句抛出 null 等等</p><p>​    4、java.lang.ClassNotFoundException</p><p>​    找不到类异常。当应用试图根据字符串形式的类名构造类，而在遍历 CLASSPAH 之后找不到对应名称的 class 文件时，抛出该异常</p><p>   5、java.lang.NegativeArraySizeException  数组长度为负异常</p><p>   6、java.lang.ArrayStoreException 数组中包含不兼容的值抛出的异常</p><p>   7、java.lang.SecurityException 安全性异常</p><p>   8、java.lang.IllegalArgumentException 非法参数异常</p><h6 id="IOException"><a href="#IOException" class="headerlink" title="IOException"></a>IOException</h6><ol><li>IOException：操作输入流和输出流时可能出现的异常。</li><li>EOFException   文件已结束异常</li><li>FileNotFoundException   文件未找到异常</li></ol><h6 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h6><ol><li>ClassCastException    类型转换异常类</li><li>ArrayStoreException  数组中包含不兼容的值抛出的异常</li><li>SQLException   操作数据库异常类</li><li>NoSuchFieldException   字段未找到异常</li><li>NoSuchMethodException   方法未找到抛出的异常</li><li>NumberFormatException    字符串转换为数字抛出的异常</li><li>StringIndexOutOfBoundsException 字符串索引超出范围抛出的异常</li><li>IllegalAccessException  不允许访问某类异常</li><li>InstantiationException  当应用程序试图使用 Class 类中的 newInstance() 方法创建一个类的实例，而指定的类对象无法被实例化时，抛出该异常</li></ol><h5 id="throw与throws的比较"><a href="#throw与throws的比较" class="headerlink" title="throw与throws的比较"></a>throw与throws的比较</h5><ol><li>throws 出现在方法函数头；而 throw 出现在函数体</li><li>throws 表示出现异常的一种可能性，并不一定会发生这些异常；throw 则是抛出了异常，执行 throw 则一定抛出了某种异常对象</li><li>两者都是消极处理异常的方式（这里的消极并不是说这种方式不好），只是抛出或者可能抛出异常，但是不会由函数去处理异常，真正的处理异常由函数的上层调用处理</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;异常&quot;&gt;&lt;a href=&quot;#异常&quot; class=&quot;headerlink&quot; title=&quot;异常&quot;&gt;&lt;/a&gt;异常&lt;/h2&gt;&lt;h5 id=&quot;以下4种情况，finally不会被执行&quot;&gt;&lt;a href=&quot;#以下4种情况，finally不会被执行&quot; class=&quot;header
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/15/HashMap%E4%B8%8EConcurrentHashMap/"/>
+    <id>http://yoursite.com/2019/05/15/HashMap与ConcurrentHashMap/</id>
+    <published>2019-05-15T07:50:12.721Z</published>
+    <updated>2019-05-15T07:50:12.721Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HashMap与ConcurrentHashMap"><a href="#HashMap与ConcurrentHashMap" class="headerlink" title="HashMap与ConcurrentHashMap"></a>HashMap与ConcurrentHashMap</h1><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap:"></a>HashMap:</h3><h5 id="类继承图"><a href="#类继承图" class="headerlink" title="类继承图"></a>类继承图</h5><p><img src="C:\Users\Goffy\Desktop\继承图谱\HashMap.jpg" alt></p><h5 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h5><p>JDK1.8之前：数组+链表（散列集）</p><p>JDK1.8之后：数组+链表（散列集）+红黑二叉树</p><h5 id="核心成员变量"><a href="#核心成员变量" class="headerlink" title="核心成员变量"></a>核心成员变量</h5><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1557891042167.png" alt="1557891042167"></p><ol><li>序列化机制验证版本</li><li>初始容量</li><li>最大容量，2的31次方</li><li>默认装载因子</li><li>当添加一个元素被添加到有至少TREEIFY_THRESHOLD节点的桶中，桶中链表将转化为链表</li><li>同上，不过是将树形结构转化为链表</li><li>桶可能被转化成树形结构的最小容量</li></ol><h6 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">362498820763181265L</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br></pre></td></tr></table></figure><h5 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h5><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1557891742915.png" alt="1557891742915"></p><h5 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h5><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1557892222219.png" alt="1557892222219"></p><h5 id="简单总结："><a href="#简单总结：" class="headerlink" title="简单总结："></a>简单总结：</h5><ul><li>无序、允许为Null、非同步</li><li>底层由散列表实现</li><li>初始容量和加载因子对其影响较大</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;HashMap与ConcurrentHashMap&quot;&gt;&lt;a href=&quot;#HashMap与ConcurrentHashMap&quot; class=&quot;headerlink&quot; title=&quot;HashMap与ConcurrentHashMap&quot;&gt;&lt;/a&gt;HashMap与Con
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/05/14/%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+    <id>http://yoursite.com/2019/05/14/包装类/</id>
+    <published>2019-05-14T11:33:16.727Z</published>
+    <updated>2019-05-14T11:33:16.728Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h1><h5 id="基本类型，引用类型"><a href="#基本类型，引用类型" class="headerlink" title="基本类型，引用类型"></a>基本类型，引用类型</h5><h5 id="以对象的形式保存基本类型的值，Java提供了对应的包装类"><a href="#以对象的形式保存基本类型的值，Java提供了对应的包装类" class="headerlink" title="以对象的形式保存基本类型的值，Java提供了对应的包装类"></a>以对象的形式保存基本类型的值，Java提供了对应的包装类</h5><table><thead><tr><th><strong>Byte byte</strong></th><th><strong>Short short</strong></th><th><strong>Integer int</strong></th><th><strong>Long long</strong></th></tr></thead><tbody><tr><td><strong>Float float</strong></td><td><strong>Double double</strong></td><td><strong>Character char</strong></td><td><strong>Boolean boolean</strong></td></tr></tbody></table><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">Integer iObj = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br></pre></td></tr></table></figure><p>所有的类都是Object类的子孙</p><p>所有的对象一定是Object的子类对象</p><p>所有的对象可以赋给Object类型的引用类型</p><ul><li>一方面出于性能方面的考虑，Java为数值使用基本类型，而不是对象。基本类型不是对象层次的组成部分，它们不继承Object</li><li>另一方面有时需要创建表示基本类型的对象，例如集合类只处理对象。为了在对象中存储基本类型，需要将基本类型包装到一个类中，为此Java为8种基本数据类型分别提供了对应的包装类。本质上这些类将基本类型包装到一个类中，因此通常将它们称为类型包装器。包装器类位于Java.lang包中</li></ul><h5 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h5><p>举例：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">100</span>;</span><br><span class="line">String str2 = Integer.toString(i); <span class="comment">//第一种方法：利用静态的toString()方法</span></span><br><span class="line">String str3 = String.valueOf(i);   <span class="comment">//第二种方法：利用String类中的valueOf()方法</span></span><br><span class="line">String str4 = i + <span class="string">""</span>;             <span class="comment">//第三种方法：投机取巧的方法</span></span><br><span class="line">Integer objI = i;  <span class="comment">//先自动装箱</span></span><br><span class="line">String str1 = objI.toString();     <span class="comment">//第四种方法：先装箱，再利用toString()方法</span></span><br><span class="line">System.out.println(str1);</span><br><span class="line">System.out.println(str2);</span><br><span class="line">System.out.println(str3);</span><br><span class="line">System.out.println(str4);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;包装类&quot;&gt;&lt;a href=&quot;#包装类&quot; class=&quot;headerlink&quot; title=&quot;包装类&quot;&gt;&lt;/a&gt;包装类&lt;/h1&gt;&lt;h5 id=&quot;基本类型，引用类型&quot;&gt;&lt;a href=&quot;#基本类型，引用类型&quot; class=&quot;headerlink&quot; title=&quot;基本类
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/04/20/%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2019/04/20/基础/</id>
+    <published>2019-04-20T07:24:42.404Z</published>
+    <updated>2019-04-24T13:58:38.516Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的"><a href="#1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的" class="headerlink" title="1、String StringBuffer和StringBuilder的区别是什么？String 为什么是不可变的"></a>1、String StringBuffer和StringBuilder的区别是什么？String 为什么是不可变的</h3><p>String：字符串常量</p><p>StringBuffer：字符串变量（线程安全）</p><p>StringBuilder：字符串变量（线程不安全）</p><h4 id="可变性："><a href="#可变性：" class="headerlink" title="可变性："></a>可变性：</h4><p>简单的来说：String与StringBuffer的主要区别是String是不可变的对象，因为每次改变String类型的时候，其实是新生成了一个新的String对象，然后将指针指向新的String对象，所以经常需要修改的String对象此时就不建议使用String了，每次改变的时候都会对系统性能产生影响。</p><p>最重要的是当内存中对象变得越来越多时，JVM的GC就开始工作，造成系统性能下降。</p><p>而StringBuffer是对此对象本身进行修改操作，不生成新的对象。所以在一般情况下，推荐使用StringBuffer。r</p><p>注意在特殊情况下：String对象的字符串拼接被JVM解释成了StringBuffer对象的拼接，而这个时候String的效率是远远比StringBuffer快的：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">" This is test "</span>+ <span class="string">" String  "</span>+ <span class="string">" Speed eg "</span>;</span><br><span class="line">StringBuffer s2 = <span class="keyword">new</span> StringBuffer(<span class="string">" This is test "</span>).append( <span class="string">" String  "</span>).append(<span class="string">" Speed eg "</span>);</span><br></pre></td></tr></table></figure><p>这个时候JVM会把s1当成</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">" This is test String Speed eg "</span>;</span><br></pre></td></tr></table></figure><p>来处理的。</p><p>但是需要注意的是如果你此时的s1对象是这样的</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String S2 = <span class="string">"This is"</span>;</span><br><span class="line">String S3 = <span class="string">"test"</span>;</span><br><span class="line">String S4 = <span class="string">"String Speed eg"</span>;</span><br><span class="line">String S1 = S2 +S3 + S4;</span><br></pre></td></tr></table></figure><p>这个时候JVM就会规矩的按照原始方法来处理。</p><h4 id="String为什么是不可变的"><a href="#String为什么是不可变的" class="headerlink" title="String为什么是不可变的"></a><strong>String为什么是不可变的</strong></h4><p>String和StringBuffer都是final类，他们生成的对象在堆中都是不可变的，在他们内部都是靠属性char数组实现的。</p><p>那为什么StringBuffer可以在对象中追加字符串呢？因为String中的char数组是final的，也就是常量，是不可改变的，而StringBuffer继承自抽象类AbstractStringBuilder，他的内部实现靠他的父类完成，AbstractStringBuilder内的char数组是变量，可以用append追加。</p><p>StringBuffer和StringBuilder都实现了AbstractStringBuilder抽象类，此抽象类实现Appendable接口因此可追加<br>（在JDK 6.0 API中StringBuilder和Stringbuffer写着都继承自Object 而且在他的API中找不到AbstractStringBuilder类）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2019/04/20/shenghuo/"/>
+    <id>http://yoursite.com/2019/04/20/shenghuo/</id>
+    <published>2019-04-20T06:08:55.430Z</published>
+    <updated>2019-04-20T06:08:55.431Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="shenghuo"><a href="#shenghuo" class="headerlink" title="shenghuo"></a>shenghuo</h5>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;shenghuo&quot;&gt;&lt;a href=&quot;#shenghuo&quot; class=&quot;headerlink&quot; title=&quot;shenghuo&quot;&gt;&lt;/a&gt;shenghuo&lt;/h5&gt;
       
     
     </summary>

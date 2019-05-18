@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Hello World | Hexo
+       | Hexo
     
   </title>
   <meta name="author" content="John Doe">
@@ -35,17 +35,6 @@
 </head>
 	<body>
 		<!-- Preloader -->
-
-	<div id="preloader">
-		<div class="pre-container">
-			
-				<div class="spinner">
-					<div class="double-bounce1"></div>
-					<div class="double-bounce2"></div>
-				</div>
-						
-		</div>
-	</div>
 
 
 <!-- header -->
@@ -160,7 +149,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Hello World》
+			当前文章&nbsp;:&nbsp;《》
 		
 	</p>
 
@@ -209,7 +198,7 @@
 		<ul>
 	
 		<li>
-			<a href="http://github.com/" target="_blank">
+			<a href="https://github.com/GoffyW" target="_blank">
 				<i class="fa fa-github"></i>
 			</a>
 		</li>
@@ -277,10 +266,6 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/04/19/hello-world/" itemprop="url">
-		Hello World
-	</a>
-
 	</div>
 
 	<div class="article-meta">
@@ -291,9 +276,9 @@
 
 	发布于
 
-	<a href="/2019/04/19/hello-world/" itemprop="url">
-		<time datetime="2019-04-19T15:15:42.216Z" itemprop="datePublished">
-	  		2019-04-19
+	<a href="/2019/04/20/基础/" itemprop="url">
+		<time datetime="2019-04-20T07:24:42.404Z" itemprop="datePublished">
+	  		2019-04-20
 	  </time>
 	</a>
 	&nbsp;
@@ -309,9 +294,9 @@
 
 	更新于
 
-	<a href="/2019/04/19/hello-world/" itemprop="url">
-		<time datetime="2019-04-19T15:15:42.216Z" itemprop="dateUpdated">
-	  		2019-04-19
+	<a href="/2019/04/20/基础/" itemprop="url">
+		<time datetime="2019-04-20T07:24:42.404Z" itemprop="dateUpdated">
+	  		2019-04-24
 	  </time>
 	</a> 
 
@@ -330,15 +315,23 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的"><a href="#1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的" class="headerlink" title="1、String StringBuffer和StringBuilder的区别是什么？String 为什么是不可变的"></a>1、String StringBuffer和StringBuilder的区别是什么？String 为什么是不可变的</h3><p>String：字符串常量</p>
+<p>StringBuffer：字符串变量（线程安全）</p>
+<p>StringBuilder：字符串变量（线程不安全）</p>
+<h4 id="可变性："><a href="#可变性：" class="headerlink" title="可变性："></a>可变性：</h4><p>简单的来说：String与StringBuffer的主要区别是String是不可变的对象，因为每次改变String类型的时候，其实是新生成了一个新的String对象，然后将指针指向新的String对象，所以经常需要修改的String对象此时就不建议使用String了，每次改变的时候都会对系统性能产生影响。</p>
+<p>最重要的是当内存中对象变得越来越多时，JVM的GC就开始工作，造成系统性能下降。</p>
+<p>而StringBuffer是对此对象本身进行修改操作，不生成新的对象。所以在一般情况下，推荐使用StringBuffer。r</p>
+<p>注意在特殊情况下：String对象的字符串拼接被JVM解释成了StringBuffer对象的拼接，而这个时候String的效率是远远比StringBuffer快的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">" This is test "</span>+ <span class="string">" String  "</span>+ <span class="string">" Speed eg "</span>;</span><br><span class="line">StringBuffer s2 = <span class="keyword">new</span> StringBuffer(<span class="string">" This is test "</span>).append( <span class="string">" String  "</span>).append(<span class="string">" Speed eg "</span>);</span><br></pre></td></tr></table></figure>
+<p>这个时候JVM会把s1当成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">" This is test String Speed eg "</span>;</span><br></pre></td></tr></table></figure>
+<p>来处理的。</p>
+<p>但是需要注意的是如果你此时的s1对象是这样的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String S2 = <span class="string">"This is"</span>;</span><br><span class="line">String S3 = <span class="string">"test"</span>;</span><br><span class="line">String S4 = <span class="string">"String Speed eg"</span>;</span><br><span class="line">String S1 = S2 +S3 + S4;</span><br></pre></td></tr></table></figure>
+<p>这个时候JVM就会规矩的按照原始方法来处理。</p>
+<h4 id="String为什么是不可变的"><a href="#String为什么是不可变的" class="headerlink" title="String为什么是不可变的"></a><strong>String为什么是不可变的</strong></h4><p>String和StringBuffer都是final类，他们生成的对象在堆中都是不可变的，在他们内部都是靠属性char数组实现的。</p>
+<p>那为什么StringBuffer可以在对象中追加字符串呢？因为String中的char数组是final的，也就是常量，是不可改变的，而StringBuffer继承自抽象类AbstractStringBuilder，他的内部实现靠他的父类完成，AbstractStringBuilder内的char数组是变量，可以用append追加。</p>
+<p>StringBuffer和StringBuilder都实现了AbstractStringBuilder抽象类，此抽象类实现Appendable接口因此可追加<br>（在JDK 6.0 API中StringBuilder和Stringbuffer写着都继承自Object 而且在他的API中找不到AbstractStringBuilder类）。</p>
 	
 	</div>
 	
@@ -357,6 +350,14 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
+			<a href="/2019/05/14/包装类/" title rel="prev">
+				&laquo;上一篇
+			</a>
+		
+		
+			<a href="/2019/04/20/shenghuo/" title rel="next">
+				下一篇&raquo;
+			</a>
 			
 	</span>
 
@@ -576,7 +577,7 @@
 		<ul>
 	
 		<li>
-			<a href="http://github.com/" target="_blank">
+			<a href="https://github.com/GoffyW" target="_blank">
 				<i class="fa fa-github"></i>
 			</a>
 		</li>
@@ -661,8 +662,6 @@
 
 
 <!-- love effect -->
-
-	<script src="/plugin/love/love.js"></script>
 
 
 <!-- back to top -->
