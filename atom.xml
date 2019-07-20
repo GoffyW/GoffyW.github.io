@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Goffy</title>
   
-  <subtitle>Goffy</subtitle>
+  <subtitle>Not Today</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-21T11:42:11.763Z</updated>
+  <updated>2019-07-20T09:39:02.763Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/Ajax/"/>
-    <id>http://yoursite.com/2019/06/09/Ajax/</id>
-    <published>2019-06-09T09:35:22.448Z</published>
-    <updated>2019-05-21T11:42:11.763Z</updated>
+    <title>Ajax+json</title>
+    <link href="http://yoursite.com/2019/02/20/Ajax/"/>
+    <id>http://yoursite.com/2019/02/20/Ajax/</id>
+    <published>2019-02-19T16:00:00.000Z</published>
+    <updated>2019-07-20T09:39:02.763Z</updated>
     
     <summary type="html">
     
@@ -35,15 +35,19 @@
     
     </summary>
     
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
-    <id>http://yoursite.com/2019/06/09/相对路径/</id>
-    <published>2019-06-09T09:35:17.698Z</published>
-    <updated>2019-05-28T09:11:09.343Z</updated>
+    <title>Maven</title>
+    <link href="http://yoursite.com/2019/02/20/Maven/"/>
+    <id>http://yoursite.com/2019/02/20/Maven/</id>
+    <published>2019-02-19T16:00:00.000Z</published>
+    <updated>2019-07-20T09:47:45.046Z</updated>
     
     <summary type="html">
     
@@ -51,21 +55,25 @@
       
         
         
-          &lt;h5 id=&quot;相对路径&quot;&gt;&lt;a href=&quot;#相对路径&quot; class=&quot;headerlink&quot;
+          &lt;h1 id=&quot;Maven学习&quot;&gt;&lt;a href=&quot;#Maven学习&quot; class=&quot;headerlink&quot; title=&quot;Maven学习&quot;&gt;&lt;/a&gt;Maven学习&lt;/h1&gt;&lt;h4 id=&quot;Maven项目目录说明：&quot;&gt;&lt;a href=&quot;#Maven项目目录说明：&quot;
         
       
     
     </summary>
     
+      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Maven" scheme="http://yoursite.com/tags/Maven/"/>
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93%EF%BC%9A/"/>
-    <id>http://yoursite.com/2019/06/09/面试题总结：/</id>
-    <published>2019-06-09T09:35:17.695Z</published>
-    <updated>2019-07-20T08:02:33.273Z</updated>
+    <title>Thread</title>
+    <link href="http://yoursite.com/2018/12/29/Thread/"/>
+    <id>http://yoursite.com/2018/12/29/Thread/</id>
+    <published>2018-12-28T16:00:00.000Z</published>
+    <updated>2019-07-20T10:15:31.480Z</updated>
     
     <summary type="html">
     
@@ -73,136 +81,25 @@
       
         
         
-          &lt;p&gt;面试题总结：&lt;/p&gt;
-&lt;h4 id=&quot;1、Byte的取值范围（-128【-2-7】——–127【2-7-1】）&quot;&gt;&lt;a href=&quot;#1、Byte的取值范围（-128【-2-7】——–127【2-7-1】）&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h2&gt;&lt;h5 id=&quot;一、线程与进程的5个阶段&quot;&gt;&lt;a href=&quot;#一、线程与进程的5个阶段&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/%E5%9F%BA%E7%A1%80/"/>
-    <id>http://yoursite.com/2019/06/09/基础/</id>
-    <published>2019-06-09T09:35:17.693Z</published>
-    <updated>2019-04-24T13:58:38.516Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;1、String-StringBuffer和StringBuilder的区别是什么？String-为什么是不可变的&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
+      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/session%E5%92%8Ccookie/"/>
-    <id>http://yoursite.com/2019/06/09/session和cookie/</id>
-    <published>2019-06-09T09:35:17.682Z</published>
-    <updated>2019-05-20T08:09:56.357Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;session和cookie&quot;&gt;&lt;a href=&quot;#session和cookie&quot; class=&quot;headerlink&quot; title=&quot;session和cookie&quot;&gt;&lt;/a&gt;session和cookie&lt;/h3&gt;&lt;h4 id=&quot;cookie&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/JDBC/"/>
-    <id>http://yoursite.com/2019/06/09/JDBC/</id>
-    <published>2019-06-09T09:35:17.669Z</published>
-    <updated>2019-05-16T11:53:32.824Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;JDBC&quot;&gt;&lt;a href=&quot;#JDBC&quot; class=&quot;headerlink&quot; title=&quot;JDBC&quot;&gt;&lt;/a&gt;JDBC&lt;/h1&gt;&lt;h5 id=&quot;全称&quot;&gt;&lt;a href=&quot;#全称&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2019/06/09/IO%E4%B8%8ENIO/"/>
-    <id>http://yoursite.com/2019/06/09/IO与NIO/</id>
-    <published>2019-06-09T09:35:17.666Z</published>
-    <updated>2019-05-15T10:16:12.286Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;IO与NIO&quot;&gt;&lt;a href=&quot;#IO与NIO&quot; class=&quot;headerlink&quot; title=&quot;IO与NIO&quot;&gt;&lt;/a&gt;IO与NIO&lt;/h2&gt;&lt;h5 id=&quot;图谱&quot;&gt;&lt;a href=&quot;#图谱&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL</title>
-    <link href="http://yoursite.com/2018/09/07/MySQL/"/>
-    <id>http://yoursite.com/2018/09/07/MySQL/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T07:58:28.005Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;看得见的行和列，看不见的索引，看错的分组（MySQL感想）&quot;&gt;&lt;a href=&quot;#看得见的行和列，看不见的索引，看错的分组（MySQL感想）&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+      <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Git上传项目到Github</title>
-    <link href="http://yoursite.com/2018/09/07/Git%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E5%88%B0Github/"/>
-    <id>http://yoursite.com/2018/09/07/Git上传项目到Github/</id>
+    <link href="http://yoursite.com/2018/09/07/GitToGithub/"/>
+    <id>http://yoursite.com/2018/09/07/GitToGithub/</id>
     <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-06-09T09:33:24.584Z</updated>
+    <updated>2019-07-20T09:46:29.183Z</updated>
     
     <summary type="html">
     
@@ -216,7 +113,7 @@
     
     </summary>
     
-      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+      <category term="Github" scheme="http://yoursite.com/categories/Github/"/>
     
     
       <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
@@ -226,11 +123,11 @@
   </entry>
   
   <entry>
-    <title>Java包装类</title>
-    <link href="http://yoursite.com/2018/09/07/%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
-    <id>http://yoursite.com/2018/09/07/包装类/</id>
+    <title>Night watcher swear</title>
+    <link href="http://yoursite.com/2018/09/07/Aray/"/>
+    <id>http://yoursite.com/2018/09/07/Aray/</id>
     <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T08:00:34.212Z</updated>
+    <updated>2019-07-20T10:17:46.469Z</updated>
     
     <summary type="html">
     
@@ -238,25 +135,25 @@
       
         
         
-          &lt;h1 id=&quot;包装类&quot;&gt;&lt;a href=&quot;#包装类&quot; class=&quot;headerlink&quot; title=&quot;包装类&quot;&gt;&lt;/a&gt;包装类&lt;/h1&gt;&lt;h5 id=&quot;基本类型，引用类型&quot;&gt;&lt;a href=&quot;#基本类型，引用类型&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;Night-watcher-swear&quot;&gt;&lt;a href=&quot;#Night-watcher-swear&quot; class=&quot;headerlink&quot; title=&quot;Night watcher swear&quot;&gt;&lt;/a&gt;Night watcher
         
       
     
     </summary>
     
-      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
+      <category term="xxx" scheme="http://yoursite.com/categories/xxx/"/>
     
     
-      <category term="基本数据类型" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+      <category term="xxx" scheme="http://yoursite.com/tags/xxx/"/>
     
   </entry>
   
   <entry>
-    <title>MyBatis总结</title>
-    <link href="http://yoursite.com/2018/09/07/MyBatis%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2018/09/07/MyBatis总结/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T07:53:43.514Z</updated>
+    <title>MyBatis</title>
+    <link href="http://yoursite.com/2018/08/02/MyBatis/"/>
+    <id>http://yoursite.com/2018/08/02/MyBatis/</id>
+    <published>2018-08-01T16:00:00.000Z</published>
+    <updated>2019-07-20T09:43:56.278Z</updated>
     
     <summary type="html">
     
@@ -278,11 +175,11 @@
   </entry>
   
   <entry>
-    <title>异常</title>
-    <link href="http://yoursite.com/2018/09/07/%E5%BC%82%E5%B8%B8/"/>
-    <id>http://yoursite.com/2018/09/07/异常/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T08:02:28.470Z</updated>
+    <title>MySQL(感想)</title>
+    <link href="http://yoursite.com/2018/02/24/MySQL/"/>
+    <id>http://yoursite.com/2018/02/24/MySQL/</id>
+    <published>2018-02-23T16:00:00.000Z</published>
+    <updated>2019-07-20T09:45:24.275Z</updated>
     
     <summary type="html">
     
@@ -290,51 +187,25 @@
       
         
         
-          &lt;h2 id=&quot;异常&quot;&gt;&lt;a href=&quot;#异常&quot; class=&quot;headerlink&quot; title=&quot;异常&quot;&gt;&lt;/a&gt;异常&lt;/h2&gt;&lt;h5 id=&quot;以下4种情况，finally不会被执行&quot;&gt;&lt;a href=&quot;#以下4种情况，finally不会被执行&quot;
+          &lt;h4 id=&quot;MySQL感想&quot;&gt;&lt;a href=&quot;#MySQL感想&quot; class=&quot;headerlink&quot; title=&quot;MySQL感想&quot;&gt;&lt;/a&gt;MySQL感想&lt;/h4&gt;&lt;h4 id=&quot;行是物理存在的，而分组是逻辑存在的。&quot;&gt;&lt;a
         
       
     
     </summary>
     
-      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
+      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
     
     
-      <category term="异常" scheme="http://yoursite.com/tags/%E5%BC%82%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多线程</title>
-    <link href="http://yoursite.com/2018/09/07/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://yoursite.com/2018/09/07/多线程/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T08:01:45.768Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h2&gt;&lt;h5 id=&quot;一、线程与进程的5个阶段&quot;&gt;&lt;a href=&quot;#一、线程与进程的5个阶段&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="多线程" scheme="http://yoursite.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-    
-      <category term="Multithreading" scheme="http://yoursite.com/tags/Multithreading/"/>
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
   </entry>
   
   <entry>
-    <title>HashMap与ConcurrentHashMap</title>
-    <link href="http://yoursite.com/2018/09/07/HashMap%E4%B8%8EConcurrentHashMap/"/>
-    <id>http://yoursite.com/2018/09/07/HashMap与ConcurrentHashMap/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T07:57:12.869Z</updated>
+    <title>HashMapAndConcurrentHashMap</title>
+    <link href="http://yoursite.com/2018/02/21/HashMapAndConcurrentHashMap/"/>
+    <id>http://yoursite.com/2018/02/21/HashMapAndConcurrentHashMap/</id>
+    <published>2018-02-20T16:00:00.000Z</published>
+    <updated>2019-07-20T09:36:25.838Z</updated>
     
     <summary type="html">
     
@@ -348,19 +219,19 @@
     
     </summary>
     
-      <category term="集合和泛型" scheme="http://yoursite.com/categories/%E9%9B%86%E5%90%88%E5%92%8C%E6%B3%9B%E5%9E%8B/"/>
+      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
     
     
-      <category term="集合" scheme="http://yoursite.com/tags/%E9%9B%86%E5%90%88/"/>
+      <category term="Java集合" scheme="http://yoursite.com/tags/Java%E9%9B%86%E5%90%88/"/>
     
   </entry>
   
   <entry>
-    <title>Servlet常见问题</title>
-    <link href="http://yoursite.com/2018/09/07/servlet/"/>
-    <id>http://yoursite.com/2018/09/07/servlet/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-07-20T07:59:11.602Z</updated>
+    <title>ArrayList.asList()总结</title>
+    <link href="http://yoursite.com/2018/02/20/Arrays.asList/"/>
+    <id>http://yoursite.com/2018/02/20/Arrays.asList/</id>
+    <published>2018-02-19T16:00:00.000Z</published>
+    <updated>2019-07-20T09:33:08.739Z</updated>
     
     <summary type="html">
     
@@ -368,7 +239,33 @@
       
         
         
-          &lt;h3 id=&quot;servlet&quot;&gt;&lt;a href=&quot;#servlet&quot; class=&quot;headerlink&quot; title=&quot;servlet&quot;&gt;&lt;/a&gt;servlet&lt;/h3&gt;&lt;h4 id=&quot;处理中文乱码问题&quot;&gt;&lt;a href=&quot;#处理中文乱码问题&quot;
+          &lt;h3 id=&quot;Arrays-asList&quot;&gt;&lt;a href=&quot;#Arrays-asList&quot; class=&quot;headerlink&quot; title=&quot;Arrays.asList()&quot;&gt;&lt;/a&gt;Arrays.asList()&lt;/h3&gt;&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
+    
+    
+      <category term="Arrays" scheme="http://yoursite.com/tags/Arrays/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>servlet</title>
+    <link href="http://yoursite.com/2018/02/20/servlet/"/>
+    <id>http://yoursite.com/2018/02/20/servlet/</id>
+    <published>2018-02-19T16:00:00.000Z</published>
+    <updated>2019-07-20T09:42:37.136Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;servlet&quot;&gt;&lt;a href=&quot;#servlet&quot; class=&quot;headerlink&quot; title=&quot;servlet&quot;&gt;&lt;/a&gt;servlet&lt;/h3&gt;&lt;h3 id=&quot;处理中文乱码问题&quot;&gt;&lt;a href=&quot;#处理中文乱码问题&quot;
         
       
     
@@ -378,6 +275,58 @@
     
     
       <category term="servlet" scheme="http://yoursite.com/tags/servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IO/NIO</title>
+    <link href="http://yoursite.com/2018/02/20/JavaIO/"/>
+    <id>http://yoursite.com/2018/02/20/JavaIO/</id>
+    <published>2018-02-19T16:00:00.000Z</published>
+    <updated>2019-07-20T09:34:37.773Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;JavaIO-NIO&quot;&gt;&lt;a href=&quot;#JavaIO-NIO&quot; class=&quot;headerlink&quot; title=&quot;JavaIO/NIO&quot;&gt;&lt;/a&gt;JavaIO/NIO&lt;/h3&gt;&lt;h3 id=&quot;IO分类&quot;&gt;&lt;a href=&quot;#IO分类&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaSE" scheme="http://yoursite.com/categories/JavaSE/"/>
+    
+    
+      <category term="IO" scheme="http://yoursite.com/tags/IO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FilterAndInterceptor</title>
+    <link href="http://yoursite.com/2017/11/03/Filter&amp;Interceptor/"/>
+    <id>http://yoursite.com/2017/11/03/Filter&amp;Interceptor/</id>
+    <published>2017-11-02T16:00:00.000Z</published>
+    <updated>2019-07-20T09:41:35.713Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;拦截器与过滤器的区别&quot;&gt;&lt;a href=&quot;#拦截器与过滤器的区别&quot; class=&quot;headerlink&quot; title=&quot;拦截器与过滤器的区别&quot;&gt;&lt;/a&gt;拦截器与过滤器的区别&lt;/h3&gt;&lt;h3 id=&quot;过滤器：&quot;&gt;&lt;a href=&quot;#过滤器：&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="FilterAndInterceptor" scheme="http://yoursite.com/tags/FilterAndInterceptor/"/>
     
   </entry>
   
