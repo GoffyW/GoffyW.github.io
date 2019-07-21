@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>初始SpringBoot</title>
+      <link href="/2019/07/18/%E5%88%9D%E8%AF%86SpringBoot/"/>
+      <url>/2019/07/18/%E5%88%9D%E8%AF%86SpringBoot/</url>
+      
+        <content type="html"><![CDATA[<h4 id="什么是SpringBoot-优点"><a href="#什么是SpringBoot-优点" class="headerlink" title="什么是SpringBoot?(优点)"></a>什么是SpringBoot?(优点)</h4><p>无须依赖外部Servlet容器，使编码变得简单，使配置变得简单，使部署变得简单，使监控变得简单</p><h4 id="创建方式："><a href="#创建方式：" class="headerlink" title="创建方式："></a>创建方式：</h4><ol><li><p>自动创建</p><p>通过 STS 快速创建一个Spring Boot项目</p></li><li><p>手动创建</p><ol><li><p>创建Maven项目</p><p>修改pom.xml文件，增加Spring Boot框架的依赖关系及对Web环境的支持</p></li></ol><pre class=" language-Java"><code class="language-Java"> <parent>        <groupId>org.springframework.boot</groupId>        <artifactId>spring-boot-starter-parent</artifactId>        <version>1.5.8.RELEASE</version>    </parent>    ...    <dependencies>        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-web</artifactId>        </dependency>    </dependencies></code></pre><ul><li>spring-boot-starter-parent：继承Spring Boot的相关参数</li><li>spring-boot-starter-xxx：代表一个Spring Boot模块</li><li>spring-boot-starter-web：代表Web模块，在这个模块中包含了许多依赖的JAR包</li></ul></li></ol><h4 id="增加程序代码"><a href="#增加程序代码" class="headerlink" title="增加程序代码"></a>增加程序代码</h4><p>在src/main/java目录中增加类com.example.demo.DemoApplication，并增加相应代码</p><p>注意：文件必须以Application结尾</p><pre class=" language-Java"><code class="language-Java">@SpringBootApplication//注解：确认SpringBoot的主入口类public class DemoApplication {    public static void main(String[] args) {        SpringApplication.run(DemoApplication.class, args);    }}</code></pre><h4 id="集成Tomcat"><a href="#集成Tomcat" class="headerlink" title="集成Tomcat"></a>集成Tomcat</h4><p>SpringBoot内置Tomcat服务</p><p>Spring Boot会自动读取src/main/resources/路径或类路径下/config路径中的application.properties文件或application.yml文件</p><p>读取顺序参考源码：</p><pre class=" language-Java"><code class="language-Java">  <resource>        <filtering>true</filtering>        <directory>${basedir}/src/main/resources</directory>        <includes>          <include>**/application*.yml</include>          <include>**/application*.yaml</include>          <include>**/application*.properties</include>        </includes>      </resource></code></pre><p>可以看出，SpringBoot可以读取${basedir}/src/main/resources下面的任意以yml、yaml或者properties结尾的配置文件，依次覆盖，yml文件更加简便，避免了重复。</p><h4 id="集成Spring-amp-SpringBoot"><a href="#集成Spring-amp-SpringBoot" class="headerlink" title="集成Spring&amp;SpringBoot"></a>集成Spring&amp;SpringBoot</h4><ul><li><p>@ComponentScan注解</p><p>该注解需要注解再入口文件(以Application结尾的含有mainf()方法的文件)</p></li></ul><pre class=" language-Java"><code class="language-Java">@ComponentScan(basePackages = "com.example.demo.controller.BoysController")@SpringBootApplicationpublic class DemoApplication {    public static void main(String[] args) {        SpringApplication.run(DemoApplication.class, args);    }}</code></pre><p>默认扫描当前包和子包</p><ul><li><p>增加控制器代码</p><ul><li>@Controller注解</li><li>@RestController注解 （Controller+ResponseBody）</li></ul><pre><code>@Controllerpublic class BoysController {    @RequestMapping(&quot;/index&quot;)    @ResponseBody    public Object index(){        Map map = new HashMap();        map.put(&quot;username&quot;, &quot;张三&quot;);        return map;    }}</code></pre></li><li><p>执行主入口文件：浏览器访问127.0.0.1：8080/index可以看到输出map集合</p></li></ul><h4 id="增加服务层代码"><a href="#增加服务层代码" class="headerlink" title="增加服务层代码"></a>增加服务层代码</h4><p>与mvc完全一致</p><h4 id="集成Mybatis"><a href="#集成Mybatis" class="headerlink" title="集成Mybatis"></a>集成Mybatis</h4><ul><li><p>增加依赖</p><pre class=" language-java"><code class="language-java"> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>springboot集成mybatis<span class="token operator">--</span><span class="token operator">></span>        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mybatis<span class="token operator">-</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.3</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>springboot集成mysql<span class="token operator">--</span><span class="token operator">></span>        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>mysql<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">8.0</span><span class="token punctuation">.</span><span class="token number">11</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre></li><li><p>配置数据源（yml文件）</p><pre class=" language-java"><code class="language-java">#数据库配置spring<span class="token operator">:</span>  datasource<span class="token operator">:</span>    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>DBNamew<span class="token operator">?</span>characterEncoding<span class="token operator">=</span>utf8<span class="token operator">&amp;</span>serverTimezone<span class="token operator">=</span>GMT<span class="token operator">%</span>2B8    username<span class="token operator">:</span> root    password<span class="token operator">:</span> <span class="token number">123456</span></code></pre><p>这几种key分别在源码中可以找到</p></li><li><p>扫描Dao接口和开启声明式事务(注解和xml)</p><ul><li><p>注解</p><ul><li>需要在Application主入口文件中增加扫描注解@MapperScan(“com.example.**.dao”)及事务管理@EnableTransactionManagement</li><li>增加Dao代码</li></ul><pre class=" language-Java"><code class="language-Java">public interface indexDao {@Select("select * from t_member where id = #{id}")public Member queryById(Integer id);</code></pre><ul><li>增加实体类</li><li>增加事务注解（ServiceImpl）</li></ul></li><li><p>xml</p><pre class=" language-Java"><code class="language-Java"><mapper namespace="com.example.demo.mapper.BoysMapper">    <select id="queryBoysList" resultType="boys">        select * from boys    </select></mapper></code></pre><ul><li>yml配置</li></ul><pre class=" language-Java"><code class="language-Java">mybatis:  type-aliases-package: com.example.demo.bean  mapper-locations:    - classpath:mapper/*Mapper.xml</code></pre></li></ul></li></ul><h4 id="集成Redis"><a href="#集成Redis" class="headerlink" title="集成Redis"></a>集成Redis</h4><ul><li><p>增加依赖</p><pre class=" language-Java"><code class="language-Java"><!--springboot集成redis-->        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-data-redis</artifactId>        </dependency></code></pre></li><li><p>yml配置</p><pre class=" language-Java"><code class="language-Java">  redis:    host: 127.0.0.1    port: 6379</code></pre></li><li><p>开启Redis服务（windows模拟）</p><p>window安装Redis,启动成功</p><p><img src alt="http://puyu3wzq5.bkt.clouddn.com/0.jpg"></p></li><li><p>编写测试代码</p><pre class=" language-Java"><code class="language-Java">@RunWith(SpringRunner.class)@SpringBootTest(classes = DemoApplication.class)public class RedisTest {    @Autowired    private RedisTemplate<String,String> redisTemplate;    @Autowired    private BoysMapper boysMapper;    @Test    public void testRedis() throws JsonProcessingException {        //1、从redis中获得数据数据的形式为json形式        String boysListJson = redisTemplate.boundValueOps("boysListsRedis.findAll").get();        //2、判断redis是否含有数据        if (boysListJson == null) {            //3、不存在数据，则从数据库中查找            List<Boys> queryBoysList = boysMapper.queryBoysList();            //3.1、将查询出的数据存放在Redis缓存中            //将list集合转化成json格式 使用jackson进行转换            ObjectMapper objectMapper = new ObjectMapper();            String writeValueAsString = objectMapper.writeValueAsString(queryBoysList);            redisTemplate.boundValueOps("boysListsRedis.findAll").set(boysListJson);            System.out.println("=======从数据库查询的数据=======");        }else {            System.out.println("======从缓存中获得的数据======");        }        //4、将数据打印在控制台        System.out.println(boysListJson);    }}</code></pre><p>第一次打印显示从数据库读取，第二次打印显示从Redis缓存中读取</p></li></ul><h4 id="分布式集成"><a href="#分布式集成" class="headerlink" title="分布式集成"></a>分布式集成</h4><ul><li><p>热部署</p><ul><li><p>增加依赖</p><pre class=" language-Java"><code class="language-Java"><dependency>        <groupId>org.springframework.boot</groupId>        <artifactId>spring-boot-devtools</artifactId>        <optional>true</optional><!-- 这个需要为 true 热部署才有效-->    </dependency></code></pre></li><li><p>IDEA需要打开自动部署，以及Ctrl+Shift+Alt+/快捷键打开when.app.running才可生效</p></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Spring </tag>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ajax+json</title>
       <link href="/2019/02/20/Ajax/"/>
       <url>/2019/02/20/Ajax/</url>
@@ -79,6 +108,31 @@
     
     
     <entry>
+      <title>Night watcher swear</title>
+      <link href="/2018/09/07/Aray/"/>
+      <url>/2018/09/07/Aray/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Night-watcher-swear"><a href="#Night-watcher-swear" class="headerlink" title="Night watcher swear"></a>Night watcher swear</h3><p>Night gathers, and now my watch begins. It shall not end until my death. I shall take no wife, hold no lands, father no children. I shall wear no crowns and win no glory. I shall live and die at my post. I am the sword in the darkness. I am the watcher on the walls. I am the fire that burns against the cold, the light that brings the dawn, the horn that wakes the sleepers, the shield that guards the realms of men. I pledge my life and honor to the Night’s Watch, for this night and all the nights to come.</p><p>长夜将至，我从今开始守望，至死方休。我将不娶妻、不封地、不生子。我将不戴宝冠，不争荣宠。我将尽忠职守，生死於斯。我是黑暗中的利剑，长城上的守卫。我是抵御寒冷的烈焰，破晓时分的光线，唤醒眠者的号角，守护王国的坚盾。我将生命与荣耀献给守夜人，今夜如此，夜夜皆然。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> xxx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> xxx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git上传项目到Github</title>
       <link href="/2018/09/07/GitToGithub/"/>
       <url>/2018/09/07/GitToGithub/</url>
@@ -98,31 +152,6 @@
             <tag> Git </tag>
             
             <tag> Github </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Night watcher swear</title>
-      <link href="/2018/09/07/Aray/"/>
-      <url>/2018/09/07/Aray/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Night-watcher-swear"><a href="#Night-watcher-swear" class="headerlink" title="Night watcher swear"></a>Night watcher swear</h3><p>Night gathers, and now my watch begins. It shall not end until my death. I shall take no wife, hold no lands, father no children. I shall wear no crowns and win no glory. I shall live and die at my post. I am the sword in the darkness. I am the watcher on the walls. I am the fire that burns against the cold, the light that brings the dawn, the horn that wakes the sleepers, the shield that guards the realms of men. I pledge my life and honor to the Night’s Watch, for this night and all the nights to come.</p><p>长夜将至，我从今开始守望，至死方休。我将不娶妻、不封地、不生子。我将不戴宝冠，不争荣宠。我将尽忠职守，生死於斯。我是黑暗中的利剑，长城上的守卫。我是抵御寒冷的烈焰，破晓时分的光线，唤醒眠者的号角，守护王国的坚盾。我将生命与荣耀献给守夜人，今夜如此，夜夜皆然。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> xxx </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> xxx </tag>
             
         </tags>
       
@@ -231,31 +260,6 @@
     
     
     <entry>
-      <title>servlet</title>
-      <link href="/2018/02/20/servlet/"/>
-      <url>/2018/02/20/servlet/</url>
-      
-        <content type="html"><![CDATA[<h3 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h3><h3 id="处理中文乱码问题"><a href="#处理中文乱码问题" class="headerlink" title="处理中文乱码问题"></a>处理中文乱码问题</h3><h5 id="请求中文乱码解决"><a href="#请求中文乱码解决" class="headerlink" title="请求中文乱码解决"></a>请求中文乱码解决</h5><ol><li>使用String进行数据重新编码</li></ol><pre class=" language-Java"><code class="language-Java">uname = new String(uname.getBytes("iso8859-1"),"utf-8");</code></pre><ol start="2"><li><p>使用公共配置</p><ul><li><p>get方法：</p><p>步骤一：</p><pre class=" language-Java"><code class="language-Java">request.setCharacterEncoding("utf-8");</code></pre><p>步骤二：</p><p>在Tomcat的目录下的conf目录中的修改server.xml文件，在Connector标签中增加useBodyEncodingForURI=”true”</p></li><li><p>post方法：</p><pre class=" language-Java"><code class="language-Java">resp.setContentType("text/html; charset=UTF-8");</code></pre></li></ul></li></ol><h3 id="forward-与-sendRedirect"><a href="#forward-与-sendRedirect" class="headerlink" title="forward 与 sendRedirect"></a>forward 与 sendRedirect</h3><table><thead><tr><th></th><th>重定向</th><th>请求转发</th></tr></thead><tbody><tr><td>第二次请求是谁请求的？</td><td>浏览器</td><td>服务器</td></tr><tr><td>浏览器发生了几次请求？</td><td>2</td><td>1</td></tr><tr><td>servlet可以共享request吗？</td><td>不可以</td><td>可以</td></tr><tr><td>地址栏是否发生改变？</td><td>是</td><td>否</td></tr><tr><td>浏览器显示的是那一次的访问地址？</td><td>最后一次</td><td>第一次</td></tr><tr><td>可以跳转到什么资源</td><td>任意资源</td><td>项目内部</td></tr><tr><td>第二次请求路径是？</td><td>绝对路径</td><td>内部路径</td></tr></tbody></table><ol><li><p>​    重定向（sendRedirect）</p><pre class=" language-Java"><code class="language-Java">resp.sendRedirect("path");</code></pre><ol><li>​    两次请求    两个request对象，数据不共享</li><li>​    浏览器地址栏信息改变</li></ol></li><li><p>请求转发（forward） </p><pre class=" language-Java"><code class="language-Java">req.getRequestDispatcher("path").forward(req, resp);</code></pre><ol><li>一次请求</li><li>浏览器地址不发生改变</li></ol></li><li><p>使用场景：</p><ol><li>如果请求中有表单数据，而数据又比较重要，不能重复提交，建议使用重定向</li><li>如果请求被servlet接收后，无法进行处理，建议使用重定向定位到可以处理资源的servlet上</li></ol></li><li><p>选择</p><ol><li>重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。</li><li>因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了</li></ol></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaWeb </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> servlet </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>IO/NIO</title>
       <link href="/2018/02/20/JavaIO/"/>
       <url>/2018/02/20/JavaIO/</url>
@@ -273,6 +277,31 @@
         <tags>
             
             <tag> IO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>servlet</title>
+      <link href="/2018/02/20/servlet/"/>
+      <url>/2018/02/20/servlet/</url>
+      
+        <content type="html"><![CDATA[<h3 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h3><h3 id="处理中文乱码问题"><a href="#处理中文乱码问题" class="headerlink" title="处理中文乱码问题"></a>处理中文乱码问题</h3><h5 id="请求中文乱码解决"><a href="#请求中文乱码解决" class="headerlink" title="请求中文乱码解决"></a>请求中文乱码解决</h5><ol><li>使用String进行数据重新编码</li></ol><pre class=" language-Java"><code class="language-Java">uname = new String(uname.getBytes("iso8859-1"),"utf-8");</code></pre><ol start="2"><li><p>使用公共配置</p><ul><li><p>get方法：</p><p>步骤一：</p><pre class=" language-Java"><code class="language-Java">request.setCharacterEncoding("utf-8");</code></pre><p>步骤二：</p><p>在Tomcat的目录下的conf目录中的修改server.xml文件，在Connector标签中增加useBodyEncodingForURI=”true”</p></li><li><p>post方法：</p><pre class=" language-Java"><code class="language-Java">resp.setContentType("text/html; charset=UTF-8");</code></pre></li></ul></li></ol><h3 id="forward-与-sendRedirect"><a href="#forward-与-sendRedirect" class="headerlink" title="forward 与 sendRedirect"></a>forward 与 sendRedirect</h3><table><thead><tr><th></th><th>重定向</th><th>请求转发</th></tr></thead><tbody><tr><td>第二次请求是谁请求的？</td><td>浏览器</td><td>服务器</td></tr><tr><td>浏览器发生了几次请求？</td><td>2</td><td>1</td></tr><tr><td>servlet可以共享request吗？</td><td>不可以</td><td>可以</td></tr><tr><td>地址栏是否发生改变？</td><td>是</td><td>否</td></tr><tr><td>浏览器显示的是那一次的访问地址？</td><td>最后一次</td><td>第一次</td></tr><tr><td>可以跳转到什么资源</td><td>任意资源</td><td>项目内部</td></tr><tr><td>第二次请求路径是？</td><td>绝对路径</td><td>内部路径</td></tr></tbody></table><ol><li><p>​    重定向（sendRedirect）</p><pre class=" language-Java"><code class="language-Java">resp.sendRedirect("path");</code></pre><ol><li>​    两次请求    两个request对象，数据不共享</li><li>​    浏览器地址栏信息改变</li></ol></li><li><p>请求转发（forward） </p><pre class=" language-Java"><code class="language-Java">req.getRequestDispatcher("path").forward(req, resp);</code></pre><ol><li>一次请求</li><li>浏览器地址不发生改变</li></ol></li><li><p>使用场景：</p><ol><li>如果请求中有表单数据，而数据又比较重要，不能重复提交，建议使用重定向</li><li>如果请求被servlet接收后，无法进行处理，建议使用重定向定位到可以处理资源的servlet上</li></ol></li><li><p>选择</p><ol><li>重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。</li><li>因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了</li></ol></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaWeb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> servlet </tag>
             
         </tags>
       
