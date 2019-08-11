@@ -4,16 +4,16 @@
   
     
     <entry>
-      <title>初始SpringBoot</title>
-      <link href="/2019/07/18/%E5%88%9D%E8%AF%86SpringBoot/"/>
-      <url>/2019/07/18/%E5%88%9D%E8%AF%86SpringBoot/</url>
+      <title>SpringBootInit</title>
+      <link href="/2019/07/18/SpringBootInit/"/>
+      <url>/2019/07/18/SpringBootInit/</url>
       
         <content type="html"><![CDATA[<h4 id="什么是SpringBoot-优点"><a href="#什么是SpringBoot-优点" class="headerlink" title="什么是SpringBoot?(优点)"></a>什么是SpringBoot?(优点)</h4><p>无须依赖外部Servlet容器，使编码变得简单，使配置变得简单，使部署变得简单，使监控变得简单</p><h4 id="创建方式："><a href="#创建方式：" class="headerlink" title="创建方式："></a>创建方式：</h4><ol><li><p>自动创建</p><p>通过 STS 快速创建一个Spring Boot项目</p></li><li><p>手动创建</p><ol><li><p>创建Maven项目</p><p>修改pom.xml文件，增加Spring Boot框架的依赖关系及对Web环境的支持</p></li></ol><pre class=" language-Java"><code class="language-Java"> <parent>        <groupId>org.springframework.boot</groupId>        <artifactId>spring-boot-starter-parent</artifactId>        <version>1.5.8.RELEASE</version>    </parent>    ...    <dependencies>        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-web</artifactId>        </dependency>    </dependencies></code></pre><ul><li>spring-boot-starter-parent：继承Spring Boot的相关参数</li><li>spring-boot-starter-xxx：代表一个Spring Boot模块</li><li>spring-boot-starter-web：代表Web模块，在这个模块中包含了许多依赖的JAR包</li></ul></li></ol><h4 id="增加程序代码"><a href="#增加程序代码" class="headerlink" title="增加程序代码"></a>增加程序代码</h4><p>在src/main/java目录中增加类com.example.demo.DemoApplication，并增加相应代码</p><p>注意：文件必须以Application结尾</p><pre class=" language-Java"><code class="language-Java">@SpringBootApplication//注解：确认SpringBoot的主入口类public class DemoApplication {    public static void main(String[] args) {        SpringApplication.run(DemoApplication.class, args);    }}</code></pre><h4 id="集成Tomcat"><a href="#集成Tomcat" class="headerlink" title="集成Tomcat"></a>集成Tomcat</h4><p>SpringBoot内置Tomcat服务</p><p>Spring Boot会自动读取src/main/resources/路径或类路径下/config路径中的application.properties文件或application.yml文件</p><p>读取顺序参考源码：</p><pre class=" language-Java"><code class="language-Java">  <resource>        <filtering>true</filtering>        <directory>${basedir}/src/main/resources</directory>        <includes>          <include>**/application*.yml</include>          <include>**/application*.yaml</include>          <include>**/application*.properties</include>        </includes>      </resource></code></pre><p>可以看出，SpringBoot可以读取${basedir}/src/main/resources下面的任意以yml、yaml或者properties结尾的配置文件，依次覆盖，yml文件更加简便，避免了重复。</p><h4 id="集成Spring-amp-SpringBoot"><a href="#集成Spring-amp-SpringBoot" class="headerlink" title="集成Spring&amp;SpringBoot"></a>集成Spring&amp;SpringBoot</h4><ul><li><p>@ComponentScan注解</p><p>该注解需要注解再入口文件(以Application结尾的含有mainf()方法的文件)</p></li></ul><pre class=" language-Java"><code class="language-Java">@ComponentScan(basePackages = "com.example.demo.controller.BoysController")@SpringBootApplicationpublic class DemoApplication {    public static void main(String[] args) {        SpringApplication.run(DemoApplication.class, args);    }}</code></pre><p>默认扫描当前包和子包</p><ul><li><p>增加控制器代码</p><ul><li>@Controller注解</li><li>@RestController注解 （Controller+ResponseBody）</li></ul><pre><code>@Controllerpublic class BoysController {    @RequestMapping(&quot;/index&quot;)    @ResponseBody    public Object index(){        Map map = new HashMap();        map.put(&quot;username&quot;, &quot;张三&quot;);        return map;    }}</code></pre></li><li><p>执行主入口文件：浏览器访问127.0.0.1：8080/index可以看到输出map集合</p></li></ul><h4 id="增加服务层代码"><a href="#增加服务层代码" class="headerlink" title="增加服务层代码"></a>增加服务层代码</h4><p>与mvc完全一致</p><h4 id="集成Mybatis"><a href="#集成Mybatis" class="headerlink" title="集成Mybatis"></a>集成Mybatis</h4><ul><li><p>增加依赖</p><pre class=" language-java"><code class="language-java"> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>springboot集成mybatis<span class="token operator">--</span><span class="token operator">></span>        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mybatis<span class="token operator">-</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.3</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>springboot集成mysql<span class="token operator">--</span><span class="token operator">></span>        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>mysql<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">8.0</span><span class="token punctuation">.</span><span class="token number">11</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre></li><li><p>配置数据源（yml文件）</p><pre class=" language-java"><code class="language-java">#数据库配置spring<span class="token operator">:</span>  datasource<span class="token operator">:</span>    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>DBNamew<span class="token operator">?</span>characterEncoding<span class="token operator">=</span>utf8<span class="token operator">&amp;</span>serverTimezone<span class="token operator">=</span>GMT<span class="token operator">%</span>2B8    username<span class="token operator">:</span> root    password<span class="token operator">:</span> <span class="token number">123456</span></code></pre><p>这几种key分别在源码中可以找到</p></li><li><p>扫描Dao接口和开启声明式事务(注解和xml)</p><ul><li><p>注解</p><ul><li>需要在Application主入口文件中增加扫描注解@MapperScan(“com.example.**.dao”)及事务管理@EnableTransactionManagement</li><li>增加Dao代码</li></ul><pre class=" language-Java"><code class="language-Java">public interface indexDao {@Select("select * from t_member where id = #{id}")public Member queryById(Integer id);</code></pre><ul><li>增加实体类</li><li>增加事务注解（ServiceImpl）</li></ul></li><li><p>xml</p><pre class=" language-Java"><code class="language-Java"><mapper namespace="com.example.demo.mapper.BoysMapper">    <select id="queryBoysList" resultType="boys">        select * from boys    </select></mapper></code></pre><ul><li>yml配置</li></ul><pre class=" language-Java"><code class="language-Java">mybatis:  type-aliases-package: com.example.demo.bean  mapper-locations:    - classpath:mapper/*Mapper.xml</code></pre></li></ul></li></ul><h4 id="集成Redis"><a href="#集成Redis" class="headerlink" title="集成Redis"></a>集成Redis</h4><ul><li><p>增加依赖</p><pre class=" language-Java"><code class="language-Java"><!--springboot集成redis-->        <dependency>            <groupId>org.springframework.boot</groupId>            <artifactId>spring-boot-starter-data-redis</artifactId>        </dependency></code></pre></li><li><p>yml配置</p><pre class=" language-Java"><code class="language-Java">  redis:    host: 127.0.0.1    port: 6379</code></pre></li><li><p>开启Redis服务（windows模拟）</p><p>window安装Redis,启动成功</p><p><img src alt="http://puyu3wzq5.bkt.clouddn.com/0.jpg"></p></li><li><p>编写测试代码</p><pre class=" language-Java"><code class="language-Java">@RunWith(SpringRunner.class)@SpringBootTest(classes = DemoApplication.class)public class RedisTest {    @Autowired    private RedisTemplate<String,String> redisTemplate;    @Autowired    private BoysMapper boysMapper;    @Test    public void testRedis() throws JsonProcessingException {        //1、从redis中获得数据数据的形式为json形式        String boysListJson = redisTemplate.boundValueOps("boysListsRedis.findAll").get();        //2、判断redis是否含有数据        if (boysListJson == null) {            //3、不存在数据，则从数据库中查找            List<Boys> queryBoysList = boysMapper.queryBoysList();            //3.1、将查询出的数据存放在Redis缓存中            //将list集合转化成json格式 使用jackson进行转换            ObjectMapper objectMapper = new ObjectMapper();            String writeValueAsString = objectMapper.writeValueAsString(queryBoysList);            redisTemplate.boundValueOps("boysListsRedis.findAll").set(boysListJson);            System.out.println("=======从数据库查询的数据=======");        }else {            System.out.println("======从缓存中获得的数据======");        }        //4、将数据打印在控制台        System.out.println(boysListJson);    }}</code></pre><p>第一次打印显示从数据库读取，第二次打印显示从Redis缓存中读取</p></li></ul><h4 id="分布式集成"><a href="#分布式集成" class="headerlink" title="分布式集成"></a>分布式集成</h4><ul><li><p>热部署</p><ul><li><p>增加依赖</p><pre class=" language-Java"><code class="language-Java"><dependency>        <groupId>org.springframework.boot</groupId>        <artifactId>spring-boot-devtools</artifactId>        <optional>true</optional><!-- 这个需要为 true 热部署才有效-->    </dependency></code></pre></li><li><p>IDEA需要打开自动部署，以及Ctrl+Shift+Alt+/快捷键打开when.app.running才可生效</p></li></ul></li></ul>]]></content>
       
       
       <categories>
           
-          <category> SpringBoot </category>
+          <category> Spring </category>
           
       </categories>
       
@@ -24,8 +24,6 @@
             
             <tag> Spring </tag>
             
-            <tag> 分布式 </tag>
-            
         </tags>
       
     </entry>
@@ -33,7 +31,7 @@
     
     
     <entry>
-      <title>Ajax+json</title>
+      <title>Ajax&amp;json</title>
       <link href="/2019/02/20/Ajax/"/>
       <url>/2019/02/20/Ajax/</url>
       
@@ -67,7 +65,7 @@
       
       <categories>
           
-          <category> 工具 </category>
+          <category> Productivity </category>
           
       </categories>
       
@@ -99,7 +97,84 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
+            <tag> multi-thread </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hashcode&amp;equals</title>
+      <link href="/2018/12/20/HashCodeAndEquals/"/>
+      <url>/2018/12/20/HashCodeAndEquals/</url>
+      
+        <content type="html"><![CDATA[<h4 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h4><p>你重写过 hashcode 和 equals 么，为什么重写equals时必须重写hashCode方法？</p><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。hashCode() 定义在JDK的Object.java中，这就意味着Java中的任何类都包含有hashCode() 函数。另外需要注意的是： Object 的 hashcode 方法是本地方法，也就是用 c 语言或 c++ 实现的，该方法通常用来将对象的 内存地址 转换为整数之后返回。</p><pre class=" language-Java"><code class="language-Java">public native int hashCode();</code></pre><h4 id="为什么要有hashCode"><a href="#为什么要有hashCode" class="headerlink" title="为什么要有hashCode"></a>为什么要有hashCode</h4><p><strong>我们以“Hash5Set如何检查重复”为例子来说明为什么要有hashCode：</strong></p><p>当你把对象加入HashSet时，HashSet会先计算对象的hashcode值来判断对象加入的位置，同时也会与其他已经加入的对象的hashcode值作比较，如果没有相符的hashcode，HashSet会假设对象没有重复出现。但是如果发现有相同hashcode值的对象，这时会调用equals（）方法来检查hashcode相等的对象是否真的相同。如果两者相同，HashSet就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。（摘自我的Java启蒙书《Head fist java》第二版）。这样我们就大大减少了equals的次数，相应就大大提高了执行速度。</p><h4 id="hashCode（）与equals（）的相关规定"><a href="#hashCode（）与equals（）的相关规定" class="headerlink" title="hashCode（）与equals（）的相关规定"></a>hashCode（）与equals（）的相关规定</h4><ol><li>如果两个对象相等，则hashcode一定也是相同的</li><li>两个对象相等,对两个对象分别调用equals方法都返回true</li><li>两个对象有相同的hashcode值，它们也不一定是相等的</li><li><strong>因此，equals方法被覆盖过，则hashCode方法也必须被覆盖</strong></li><li>hashCode()的默认行为是对堆上的对象产生独特值。如果没有重写hashCode()，则该class的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）</li></ol><h4 id="为什么两个对象有相同的hashcode值，它们也不一定是相等的？"><a href="#为什么两个对象有相同的hashcode值，它们也不一定是相等的？" class="headerlink" title="为什么两个对象有相同的hashcode值，它们也不一定是相等的？"></a>为什么两个对象有相同的hashcode值，它们也不一定是相等的？</h4><p>在这里解释一位小伙伴的问题。以下内容摘自《Head Fisrt Java》。</p><p>因为hashCode() 所使用的杂凑算法也许刚好会让多个对象传回相同的杂凑值。越糟糕的杂凑算法越容易碰撞，但这也与数据值域分布的特性有关（所谓碰撞也就是指的是不同的对象得到相同的 hashCode）。</p><p>我们刚刚也提到了 HashSet,如果 HashSet 在对比的时候，同样的 hashcode 有多个对象，它会使用 equals() 来判断是否真的相同。也就是说 hashcode 只是用来缩小查找成本。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HashCodeAndEquals </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>time</title>
+      <link href="/2018/11/20/Time/"/>
+      <url>/2018/11/20/Time/</url>
+      
+        <content type="html"><![CDATA[<h2 id="DateTime"><a href="#DateTime" class="headerlink" title="DateTime"></a>DateTime</h2><h4 id="时间："><a href="#时间：" class="headerlink" title="时间："></a>时间：</h4><h4 id="时区："><a href="#时区：" class="headerlink" title="时区："></a>时区：</h4><p>​    地球是圆的，每个地区看到的太阳升起的时间是不相同的，也就是说，东8区的北京人民的手表显示的8:00和东1区欧洲人民手表显示的1:00是相同的时刻</p><pre class=" language-Java"><code class="language-Java">"2018-10-14 08:00 +8:00" = "2018-10-14 01:00 +1:00"    </code></pre><p>​    而到了Java语言里面，也就是数据库（MySQL），Java用的是 new Date() 方法来保存当时日期，但是到数据库的 DateTime 类型是没有时区信息的，如果此时用 DateTime 格式保存日期，就会丢失时区信息，如果服务器更该地址，从数据库读出来的日期数据就是错误的！</p><p>​    用 timeStamp 类型保存总不会丢失时区信息了吧？确实没丢失。但是，timeStamp 保存的时间最长不能超过 2038-01-19 年，而且要考虑每个数据的 timeStamp 类型都有可能不一样。不过它的优质就是做一下国际项目的时候自动转换时区问题。</p><p>​    用datetime，占用8个字节，它存储的时间范围为1000-01-01 00:00:00 ~ 9999-12-31 23:59:59。储存的时间不带有时区。</p><pre><code> JDK8 中新的时间 API LocalDateTime 中，有着丰富的时区转换的方法，但是也是要经过复杂是转换计算。</code></pre><h4 id="解决以上问题需要引入”绝对时间”-这个概念。"><a href="#解决以上问题需要引入”绝对时间”-这个概念。" class="headerlink" title="解决以上问题需要引入”绝对时间” 这个概念。"></a>解决以上问题需要引入”绝对时间” 这个概念。</h4><p>​    绝对时间不需要年月日，而是以秒来计时。当前时间是指从一个基准时间（1970-1-1 00:00:00 +0:00），到现在的秒数，用一个整数表示。</p><p>​    而且很重要的一点就是，在现有的编程语言中，都提供了方法来获取时间戳，这对于不同语言的项目交互来说，不要太方便！</p><p>​    数据库用数值保存时间戳的诸多好处：</p><ol><li>在数据库中日期比较不要太方便，小学一年级就会的数学题，而且性能好；</li><li>数值对于任何系统交互来说都不存在障碍；</li><li>基于绝对时间的数值存储，不存在时区问题；</li><li>在交互过程中，摒弃没必要的重重转换，一个数字走天下，用户需要显示，前端只需要拿到时间戳显示正确的本地时间；</li><li>解决了由于各个数据库对于时间实现的不一样导致的问题，比如说 Mysql 的时间函数跟 Oracle 会有一些差别，假如你现在的 sql 有时间函数，换了数据库很可能就会出错。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DateTime </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GitToGithub</title>
+      <link href="/2018/09/07/GitToGithub/"/>
+      <url>/2018/09/07/GitToGithub/</url>
+      
+        <content type="html"><![CDATA[<h3 id="GitToGithub"><a href="#GitToGithub" class="headerlink" title="GitToGithub"></a>GitToGithub</h3><h4 id="0、新建文件夹"><a href="#0、新建文件夹" class="headerlink" title="0、新建文件夹"></a>0、新建文件夹</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036553006.png" alt="1559036553006"></p><h4 id="1、在此文件夹右键Git-Bash-Here，输入命令"><a href="#1、在此文件夹右键Git-Bash-Here，输入命令" class="headerlink" title="1、在此文件夹右键Git Bash Here，输入命令"></a>1、在此文件夹右键Git Bash Here，输入命令</h4><pre class=" language-Java"><code class="language-Java">git init</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036600072.png" alt="1559036600072"></p><p>此步操作为初始化git工作区间</p><h4 id="2、将需要上传的项目复制到工作区间"><a href="#2、将需要上传的项目复制到工作区间" class="headerlink" title="2、将需要上传的项目复制到工作区间"></a>2、将需要上传的项目复制到工作区间</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036752091.png" alt="1559036752091"></p><h4 id="3、输入命令git-status-查看git工作区间的文件变化"><a href="#3、输入命令git-status-查看git工作区间的文件变化" class="headerlink" title="3、输入命令git status 查看git工作区间的文件变化"></a>3、输入命令git status 查看git工作区间的文件变化</h4><pre><code>git status</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036885875.png" alt="1559036885875"></p><h4 id="4、输入命令git-add-将文件加入到暂存区"><a href="#4、输入命令git-add-将文件加入到暂存区" class="headerlink" title="4、输入命令git add . 将文件加入到暂存区"></a>4、输入命令git add . 将文件加入到暂存区</h4><pre><code>git add .</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036995464.png" alt="1559036995464"></p><h4 id="5、将文件提交到本地仓库"><a href="#5、将文件提交到本地仓库" class="headerlink" title="5、将文件提交到本地仓库"></a>5、将文件提交到本地仓库</h4><pre><code>git commit -m &quot;the first commit&quot;</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037091035.png" alt="1559037091035"></p><h4 id="6、在Github种新建仓库"><a href="#6、在Github种新建仓库" class="headerlink" title="6、在Github种新建仓库"></a>6、在Github种新建仓库</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037194341.png" alt="1559037194341"></p><p>7、复制仓库链接（https链接）</p><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037237509.png" alt="1559037237509"></p><h4 id="8、将本地仓库关联到Github仓库"><a href="#8、将本地仓库关联到Github仓库" class="headerlink" title="8、将本地仓库关联到Github仓库"></a>8、将本地仓库关联到Github仓库</h4><pre><code>git remote add origin https://...</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037332932.png" alt="1559037332932"></p><h4 id="9、将本地仓库同步到GitHub仓库"><a href="#9、将本地仓库同步到GitHub仓库" class="headerlink" title="9、将本地仓库同步到GitHub仓库"></a>9、将本地仓库同步到GitHub仓库</h4><pre><code>git push origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037744888.png" alt="1559037744888"></p><h3 id="一点一点积累"><a href="#一点一点积累" class="headerlink" title="一点一点积累"></a>一点一点积累</h3><p>git拉取远程仓库代码与本地合并：</p><pre><code>git pull origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1562244421283.png" alt="1562244421283"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git&amp;Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> Github </tag>
             
         </tags>
       
@@ -133,33 +208,6 @@
     
     
     <entry>
-      <title>Git上传项目到Github</title>
-      <link href="/2018/09/07/GitToGithub/"/>
-      <url>/2018/09/07/GitToGithub/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Git上传项目到Github"><a href="#Git上传项目到Github" class="headerlink" title="Git上传项目到Github"></a>Git上传项目到Github</h3><h4 id="0、新建文件夹"><a href="#0、新建文件夹" class="headerlink" title="0、新建文件夹"></a>0、新建文件夹</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036553006.png" alt="1559036553006"></p><h4 id="1、在此文件夹右键Git-Bash-Here，输入命令"><a href="#1、在此文件夹右键Git-Bash-Here，输入命令" class="headerlink" title="1、在此文件夹右键Git Bash Here，输入命令"></a>1、在此文件夹右键Git Bash Here，输入命令</h4><pre class=" language-Java"><code class="language-Java">git init</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036600072.png" alt="1559036600072"></p><p>此步操作为初始化git工作区间</p><h4 id="2、将需要上传的项目复制到工作区间"><a href="#2、将需要上传的项目复制到工作区间" class="headerlink" title="2、将需要上传的项目复制到工作区间"></a>2、将需要上传的项目复制到工作区间</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036752091.png" alt="1559036752091"></p><h4 id="3、输入命令git-status-查看git工作区间的文件变化"><a href="#3、输入命令git-status-查看git工作区间的文件变化" class="headerlink" title="3、输入命令git status 查看git工作区间的文件变化"></a>3、输入命令git status 查看git工作区间的文件变化</h4><pre><code>git status</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036885875.png" alt="1559036885875"></p><h4 id="4、输入命令git-add-将文件加入到暂存区"><a href="#4、输入命令git-add-将文件加入到暂存区" class="headerlink" title="4、输入命令git add . 将文件加入到暂存区"></a>4、输入命令git add . 将文件加入到暂存区</h4><pre><code>git add .</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036995464.png" alt="1559036995464"></p><h4 id="5、将文件提交到本地仓库"><a href="#5、将文件提交到本地仓库" class="headerlink" title="5、将文件提交到本地仓库"></a>5、将文件提交到本地仓库</h4><pre><code>git commit -m &quot;the first commit&quot;</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037091035.png" alt="1559037091035"></p><h4 id="6、在Github种新建仓库"><a href="#6、在Github种新建仓库" class="headerlink" title="6、在Github种新建仓库"></a>6、在Github种新建仓库</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037194341.png" alt="1559037194341"></p><p>7、复制仓库链接（https链接）</p><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037237509.png" alt="1559037237509"></p><h4 id="8、将本地仓库关联到Github仓库"><a href="#8、将本地仓库关联到Github仓库" class="headerlink" title="8、将本地仓库关联到Github仓库"></a>8、将本地仓库关联到Github仓库</h4><pre><code>git remote add origin https://...</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037332932.png" alt="1559037332932"></p><h4 id="9、将本地仓库同步到GitHub仓库"><a href="#9、将本地仓库同步到GitHub仓库" class="headerlink" title="9、将本地仓库同步到GitHub仓库"></a>9、将本地仓库同步到GitHub仓库</h4><pre><code>git push origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037744888.png" alt="1559037744888"></p><h3 id="一点一点积累"><a href="#一点一点积累" class="headerlink" title="一点一点积累"></a>一点一点积累</h3><p>git拉取远程仓库代码与本地合并：</p><pre><code>git pull origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1562244421283.png" alt="1562244421283"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Github </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Git </tag>
-            
-            <tag> Github </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>MyBatis</title>
       <link href="/2018/08/02/MyBatis/"/>
       <url>/2018/08/02/MyBatis/</url>
@@ -169,7 +217,7 @@
       
       <categories>
           
-          <category> JavaEE </category>
+          <category> ORM </category>
           
       </categories>
       
@@ -185,7 +233,82 @@
     
     
     <entry>
-      <title>MySQL(感想)</title>
+      <title>ConcurrentHashMap</title>
+      <link href="/2018/06/12/ConcurrentHashMap/"/>
+      <url>/2018/06/12/ConcurrentHashMap/</url>
+      
+        <content type="html"><![CDATA[<p>ConcurrentHashMap这个类在java.lang.current包中，这个包中的类都是线程安全的。</p><p>ConcurrentHashMap底层存储数据的结构与1.8的HashMap是一样的，都是数组+链表（或红黑树）的结构。</p><p>在日常的开发中，我们最长用到的键值对存储结构的是HashMap，但是我们知道，这个类是非线程安全的，<strong>在高并发的场景下，在进行put操作的时候有可能进入死循环从而使服务器的cpu使用率达到100%</strong>；</p><p>sun公司因此也给出了与之对应的线程安全的类。在jdk1.5以前，使用的是HashTable，这个类为了保证线程安全，在每个类中都添加了synchronized关键字，而想而知在高并发的情景下相率是非常低下的。</p><p>为了解决HashTable效率低下的问题，官网在jdk1.5后推出了ConcurrentHashMap来替代饱受诟病的HashTable。</p><p>jdk1.5后ConcurrentHashMap使用了分段锁的技术。在整个数组中被分为多个segment，每次get，put，remove操作时就锁住目标元素所在的segment中，因此segment与segment之前是可以并发操作的，上述就是jdk1.5后实现线程安全的大致思想。</p><p>但是，从描述中可以看出一个问题，就是如果出现比较机端的情况，所有的数据都集中在一个segment中的话，在并发的情况下相当于锁住了全表，这种情况下其实是和HashTable的效率出不多的，但总体来说相较于HashTable，效率还是有了很大的提升。</p><p>jdk1.8后，ConcurrentHashMap摒弃了segment的思想，转而使用cas+synchronized组合的方式来实现并发下的线程安全的，这种实现方式比1.5的效率又有了比较大的提升。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaCollection </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>==AndEq</title>
+      <link href="/2018/06/12/==AndEqulas/"/>
+      <url>/2018/06/12/==AndEqulas/</url>
+      
+        <content type="html"><![CDATA[<h2 id="AndEq"><a href="#AndEq" class="headerlink" title="==AndEq"></a>==AndEq</h2><p>==** : 它的作用是判断两个对象的地址是不是相等。即，判断两个对象是不是同一个对象。(基本数据类型==比较的是值，引用数据类型==比较的是内存地址)</p><p><strong>equals()</strong> : 它的作用也是判断两个对象是否相等。但它一般有两种使用情况：</p><ul><li>情况1：类没有覆盖equals()方法。则通过equals()比较该类的两个对象时，等价于通过“==”比较这两个对象。</li><li>情况2：类覆盖了equals()方法。一般，我们都覆盖equals()方法来判断两个对象的内容相等；若它们的内容相等，则返回true(即，认为这两个对象相等)。</li></ul><pre class=" language-Java"><code class="language-Java">public class test04 {    public static void main(String[] args) {        String a = new String("ab"); // a 为一个引用        String b = new String("ab"); // b为另一个引用,对象的内容一样        String aa = "ab"; // 放在常量池中        String bb = "ab"; // 从常量池中查找        if (aa == bb) // true            System.out.println("aa==bb");        if (a == b) // false，非同一对象            System.out.println("a==b");        if (a.equals(b)) // true            System.out.println("aEQb");        if (42 == 42.0) { // true            System.out.println("true");        }    }}</code></pre><p><strong>说明：</strong></p><ul><li>String中的equals方法是被重写过的，因为object的equals方法是比较的对象的内存地址，而String的equals方法比较的是对象的值。</li><li>当创建String类型的对象时，虚拟机会在常量池中查找有没有已经存在的值和要创建的值相同的对象，如果有就把它赋给当前引用。如果没有就在常量池中重新创建一个String对象。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> String </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Param</title>
+      <link href="/2018/03/04/Param/"/>
+      <url>/2018/03/04/Param/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Param注解的学习与总结"><a href="#Param注解的学习与总结" class="headerlink" title="@Param注解的学习与总结"></a>@Param注解的学习与总结</h2><p>参考博客：</p><h3 id="场景一：方法有多个参数，需要-Param-注解"><a href="#场景一：方法有多个参数，需要-Param-注解" class="headerlink" title="场景一：方法有多个参数，需要 @Param 注解"></a>场景一：方法有多个参数，需要 @Param 注解</h3><p>最常见的需要添加@Param注解的场景</p><pre class=" language-Java"><code class="language-Java">@Mapperpublic interface UserMapper {    Integer insert(@Param("username") String username, @Param("address") String address);}</code></pre><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>insert</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>insert<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.javaboy.helloboot.bean.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    insert into user (username,address) values (#{username},#{address});<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>insert</span><span class="token punctuation">></span></span></code></pre><h3 id="场景二：方法参数要取别名，需要-Param-注解"><a href="#场景二：方法参数要取别名，需要-Param-注解" class="headerlink" title="场景二：方法参数要取别名，需要 @Param 注解"></a>场景二：方法参数要取别名，需要 @Param 注解</h3><pre class=" language-Java"><code class="language-Java">@Mapperpublic interface UserMapper {    User getUserByUsername(@Param("name") String username);}</code></pre><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getUserByUsername<span class="token punctuation">"</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.javaboy.helloboot.bean.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    select * from user where username=#{name};<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></code></pre><h3 id="场景三：XML-中的-SQL-使用了-，那么参数中也需要-Param-注解"><a href="#场景三：XML-中的-SQL-使用了-，那么参数中也需要-Param-注解" class="headerlink" title="场景三：XML 中的 SQL 使用了 $ ，那么参数中也需要 @Param 注解"></a>场景三：XML 中的 SQL 使用了 $ ，那么参数中也需要 @Param 注解</h3><p>会有sql注入的问题</p><pre class=" language-Java"><code class="language-Java">@Mapperpublic interface UserMapper {    List<User> getAllUsers(@Param("order_by")String order_by);}</code></pre><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getAllUsers<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.javaboy.helloboot.bean.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    select * from user    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>order_by!<span class="token punctuation">=</span>null and order_by!<span class="token punctuation">=</span><span class="token punctuation">'</span><span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>        order by ${order_by} desc    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></code></pre><h3 id="场景四：动态-SQL-，如果在动态-SQL-中使用了参数作为变量，那么也需要-Param-注解，即使你只有一个参数"><a href="#场景四：动态-SQL-，如果在动态-SQL-中使用了参数作为变量，那么也需要-Param-注解，即使你只有一个参数" class="headerlink" title="场景四：动态 SQL ，如果在动态 SQL 中使用了参数作为变量，那么也需要 @Param 注解，即使你只有一个参数"></a>场景四：动态 SQL ，如果在动态 SQL 中使用了参数作为变量，那么也需要 @Param 注解，即使你只有一个参数</h3><p>如果在动态 SQL 中用到了 参数作为判断条件，那么也是一定要加 @Param 注解的</p><pre class=" language-Java"><code class="language-Java">@Mapperpublic interface UserMapper {    List<User> getUserById(@Param("id")Integer id);}</code></pre><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getUserById<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.javaboy.helloboot.bean.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    select * from user    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id!<span class="token punctuation">=</span>null<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>        where id=#{id}    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringMVC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL</title>
       <link href="/2018/02/24/MySQL/"/>
       <url>/2018/02/24/MySQL/</url>
       
@@ -226,7 +349,7 @@
       
         <tags>
             
-            <tag> Java集合 </tag>
+            <tag> JavaCollection </tag>
             
         </tags>
       
@@ -235,7 +358,7 @@
     
     
     <entry>
-      <title>ArrayList.asList()总结</title>
+      <title>ArrayList.asList()</title>
       <link href="/2018/02/20/Arrays.asList/"/>
       <url>/2018/02/20/Arrays.asList/</url>
       
@@ -252,6 +375,31 @@
         <tags>
             
             <tag> Arrays </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>servlet</title>
+      <link href="/2018/02/20/servlet/"/>
+      <url>/2018/02/20/servlet/</url>
+      
+        <content type="html"><![CDATA[<h3 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h3><h3 id="处理中文乱码问题"><a href="#处理中文乱码问题" class="headerlink" title="处理中文乱码问题"></a>处理中文乱码问题</h3><h5 id="请求中文乱码解决"><a href="#请求中文乱码解决" class="headerlink" title="请求中文乱码解决"></a>请求中文乱码解决</h5><ol><li>使用String进行数据重新编码</li></ol><pre class=" language-Java"><code class="language-Java">uname = new String(uname.getBytes("iso8859-1"),"utf-8");</code></pre><ol start="2"><li><p>使用公共配置</p><ul><li><p>get方法：</p><p>步骤一：</p><pre class=" language-Java"><code class="language-Java">request.setCharacterEncoding("utf-8");</code></pre><p>步骤二：</p><p>在Tomcat的目录下的conf目录中的修改server.xml文件，在Connector标签中增加useBodyEncodingForURI=”true”</p></li><li><p>post方法：</p><pre class=" language-Java"><code class="language-Java">resp.setContentType("text/html; charset=UTF-8");</code></pre></li></ul></li></ol><h3 id="forward-与-sendRedirect"><a href="#forward-与-sendRedirect" class="headerlink" title="forward 与 sendRedirect"></a>forward 与 sendRedirect</h3><table><thead><tr><th></th><th>重定向</th><th>请求转发</th></tr></thead><tbody><tr><td>第二次请求是谁请求的？</td><td>浏览器</td><td>服务器</td></tr><tr><td>浏览器发生了几次请求？</td><td>2</td><td>1</td></tr><tr><td>servlet可以共享request吗？</td><td>不可以</td><td>可以</td></tr><tr><td>地址栏是否发生改变？</td><td>是</td><td>否</td></tr><tr><td>浏览器显示的是那一次的访问地址？</td><td>最后一次</td><td>第一次</td></tr><tr><td>可以跳转到什么资源</td><td>任意资源</td><td>项目内部</td></tr><tr><td>第二次请求路径是？</td><td>绝对路径</td><td>内部路径</td></tr></tbody></table><ol><li><p>​    重定向（sendRedirect）</p><pre class=" language-Java"><code class="language-Java">resp.sendRedirect("path");</code></pre><ol><li>​    两次请求    两个request对象，数据不共享</li><li>​    浏览器地址栏信息改变</li></ol></li><li><p>请求转发（forward） </p><pre class=" language-Java"><code class="language-Java">req.getRequestDispatcher("path").forward(req, resp);</code></pre><ol><li>一次请求</li><li>浏览器地址不发生改变</li></ol></li><li><p>使用场景：</p><ol><li>如果请求中有表单数据，而数据又比较重要，不能重复提交，建议使用重定向</li><li>如果请求被servlet接收后，无法进行处理，建议使用重定向定位到可以处理资源的servlet上</li></ol></li><li><p>选择</p><ol><li>重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。</li><li>因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了</li></ol></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaWeb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> servlet </tag>
             
         </tags>
       
@@ -285,23 +433,23 @@
     
     
     <entry>
-      <title>servlet</title>
-      <link href="/2018/02/20/servlet/"/>
-      <url>/2018/02/20/servlet/</url>
+      <title>ValueAndRefe</title>
+      <link href="/2017/12/20/ValueAndReference/"/>
+      <url>/2017/12/20/ValueAndReference/</url>
       
-        <content type="html"><![CDATA[<h3 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h3><h3 id="处理中文乱码问题"><a href="#处理中文乱码问题" class="headerlink" title="处理中文乱码问题"></a>处理中文乱码问题</h3><h5 id="请求中文乱码解决"><a href="#请求中文乱码解决" class="headerlink" title="请求中文乱码解决"></a>请求中文乱码解决</h5><ol><li>使用String进行数据重新编码</li></ol><pre class=" language-Java"><code class="language-Java">uname = new String(uname.getBytes("iso8859-1"),"utf-8");</code></pre><ol start="2"><li><p>使用公共配置</p><ul><li><p>get方法：</p><p>步骤一：</p><pre class=" language-Java"><code class="language-Java">request.setCharacterEncoding("utf-8");</code></pre><p>步骤二：</p><p>在Tomcat的目录下的conf目录中的修改server.xml文件，在Connector标签中增加useBodyEncodingForURI=”true”</p></li><li><p>post方法：</p><pre class=" language-Java"><code class="language-Java">resp.setContentType("text/html; charset=UTF-8");</code></pre></li></ul></li></ol><h3 id="forward-与-sendRedirect"><a href="#forward-与-sendRedirect" class="headerlink" title="forward 与 sendRedirect"></a>forward 与 sendRedirect</h3><table><thead><tr><th></th><th>重定向</th><th>请求转发</th></tr></thead><tbody><tr><td>第二次请求是谁请求的？</td><td>浏览器</td><td>服务器</td></tr><tr><td>浏览器发生了几次请求？</td><td>2</td><td>1</td></tr><tr><td>servlet可以共享request吗？</td><td>不可以</td><td>可以</td></tr><tr><td>地址栏是否发生改变？</td><td>是</td><td>否</td></tr><tr><td>浏览器显示的是那一次的访问地址？</td><td>最后一次</td><td>第一次</td></tr><tr><td>可以跳转到什么资源</td><td>任意资源</td><td>项目内部</td></tr><tr><td>第二次请求路径是？</td><td>绝对路径</td><td>内部路径</td></tr></tbody></table><ol><li><p>​    重定向（sendRedirect）</p><pre class=" language-Java"><code class="language-Java">resp.sendRedirect("path");</code></pre><ol><li>​    两次请求    两个request对象，数据不共享</li><li>​    浏览器地址栏信息改变</li></ol></li><li><p>请求转发（forward） </p><pre class=" language-Java"><code class="language-Java">req.getRequestDispatcher("path").forward(req, resp);</code></pre><ol><li>一次请求</li><li>浏览器地址不发生改变</li></ol></li><li><p>使用场景：</p><ol><li>如果请求中有表单数据，而数据又比较重要，不能重复提交，建议使用重定向</li><li>如果请求被servlet接收后，无法进行处理，建议使用重定向定位到可以处理资源的servlet上</li></ol></li><li><p>选择</p><ol><li>重定向的速度比转发慢，因为浏览器还得发出一个新的请求，如果在使用转发和重定向都无所谓的时候建议使用转发。</li><li>因为转发只能访问当前WEB的应用程序，所以不同WEB应用程序之间的访问，特别是要访问到另外一个WEB站点上的资源的情况，这个时候就只能使用重定向了</li></ol></li></ol>]]></content>
+        <content type="html"><![CDATA[<h4 id="参数传递给方法（或函数）"><a href="#参数传递给方法（或函数）" class="headerlink" title="参数传递给方法（或函数）"></a>参数传递给方法（或函数）</h4><blockquote><p><strong>按值调用(call by value)表示方法接收的是调用者提供的值，而按引用调用（call by reference)表示方法接收的是调用者提供的变量地址。一个方法可以修改传递引用所对应的变量值，而不能修改传递值调用所对应的变量值。</strong></p></blockquote><blockquote><p><strong>Java程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，也就是说，方法不能修改传递给它的任何参数变量的内容</strong></p></blockquote><h4 id="eg1"><a href="#eg1" class="headerlink" title="eg1:"></a>eg1:</h4><pre class=" language-Java"><code class="language-Java">    /**     * 一个方法不能修改一个基本类型的参数的值     */    public static void main(String[] args) {        int num1 = 10;        int num2 = 20;        swap(num1,num2);        System.out.println("num1="+num1);        System.out.println("num2="+num2);    }    public static void swap(int a,int b){        int temp = a;        a=b;        b=temp;        System.out.println("a="+a);//a只是Num1的拷贝，num1本身并不会改变        System.out.println("b="+b);    }    output:    a=20    b=10    num1=10    num2=20</code></pre><p>一个方法不能修改一个基本数据类型的参数，而对象引用作为参数非也</p><h4 id="eg2"><a href="#eg2" class="headerlink" title="eg2:"></a>eg2:</h4><pre><code>    /**     * 方法得到的是对象引用的拷贝，对象引用及其他的拷贝同时引用同一个对象     * @param args     */    public static void main(String[] args) {        int [] arr = {1,2,3,4,5};        System.out.println(arr[0]);        exchange(arr);        System.out.println(arr[0]);    }    public static void exchange(int [] array){        array[0]=0;    }    output:    1    0</code></pre><p>可以明显的看出：</p><p><strong>方法得到的是对象引用的拷贝，对象引用及其他的拷贝同时引用同一个对象</strong></p><h4 id="eg3"><a href="#eg3" class="headerlink" title="eg3:"></a>eg3:</h4><pre class=" language-Java"><code class="language-Java">    public static void main(String[] args) {        Players players1 = new Players("Jordan");        Players players2 = new Players("Kobe");        Test03.swap(players1,players2);        System.out.println("players1="+players1.getName());        System.out.println("players2="+players2.getName());    }    public static void swap(Players x,Players y){        Players temp = x;        x=y;        y=temp;        System.out.println("players1="+x.getName());        System.out.println("players2="+y.getName());    }    output:x=Kobey=Jordanplayers1=Jordanplayers2=Kobe</code></pre><p>和第二个例子一样，<strong>方法并没有改变存储在变量 players1和 players1 中的对象引用。swap方法的参数x和y被初始化为两个对象引用的拷贝，这个方法交换的是这两个拷贝</strong></p><h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul><li>一个方法不能修改一个基本数据类型的参数（即数值型或布尔型）。</li><li>一个方法可以改变一个对象参数的状态。</li><li>一个方法不能让对象参数引用一个新的对象。</li></ul><p>参考：</p>]]></content>
       
       
       <categories>
           
-          <category> JavaWeb </category>
+          <category> JavaSE </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> servlet </tag>
+            <tag> String </tag>
             
         </tags>
       
