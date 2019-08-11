@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/09/20/SpringMVC/</loc>
+    
+    <lastmod>2019-08-11T05:44:19.406Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/04/Param/</loc>
     
     <lastmod>2019-08-11T02:22:36.931Z</lastmod>

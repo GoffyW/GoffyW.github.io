@@ -31,31 +31,6 @@
     
     
     <entry>
-      <title>Ajax&amp;json</title>
-      <link href="/2019/02/20/Ajax/"/>
-      <url>/2019/02/20/Ajax/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Ajax-json"><a href="#Ajax-json" class="headerlink" title="Ajax+json"></a>Ajax+json</h2><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><p>​    在用户与服务器之间引入一个中间媒介，从而消除了网络交互过程中的处理—等待—处理—等待缺点</p><h4 id="缺陷："><a href="#缺陷：" class="headerlink" title="缺陷："></a>缺陷：</h4><ol><li>需要测试浏览器的支持</li><li>网页的后退功能是失效的，需要明显的提示用户“数据已更新”</li><li>手机设备，支持不是很友好</li></ol><h4 id="对象（重要）"><a href="#对象（重要）" class="headerlink" title="对象（重要）"></a>对象（重要）</h4><ol><li><h5 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h5><p>提供客户端同HTTP服务器通讯的协议</p><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//IE</span><span class="token keyword">var</span> xmlHttpReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"MSXML2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlHttpReq<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非IE</span><span class="token keyword">var</span> xmlHttpReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlHttpReq<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li><li><h5 id="onreadystatechange"><a href="#onreadystatechange" class="headerlink" title="onreadystatechange"></a>onreadystatechange</h5><p>指定当readyState属性改变时的事件处理句柄</p><pre class=" language-JS"><code class="language-JS">var xmlhttp=null;function PostOrder(xmldoc){  var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP.5.0");  xmlhttp.Open("POST", "http://myserver/orders/processorder.asp", false);   xmlhttp.onreadystatechange= HandleStateChange;  xmlhttp.Send(xmldoc);  myButton.disabled = true;}function HandleStateChange(){  if (xmlhttp.readyState == 4)  {    myButton.disabled = false;    alert("Result = " + xmlhttp.responseXML.xml);  }}</code></pre></li><li><h5 id="status"><a href="#status" class="headerlink" title="status"></a>status</h5><p>返回当前请求的http状态码</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>常用状态码以及含义：</p><ol><li>404  没找到页面(not found)</li><li>403  禁止访问(forbidden)</li><li>500  内部服务器出错(internal service error)</li><li>200  一切正常(ok)</li><li>304 没有被修改(not modified)(服务器返回304状态，表示源文件没有被修改 )</li></ol></li><li><h5 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h5><p>返回XMLHTTP请求的当前状态</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> XmlHttp<span class="token punctuation">;</span>XmlHttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">function</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   XmlHttp<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> doHttpReadyStateChange<span class="token punctuation">;</span>   XmlHttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/sample.xml"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   XmlHttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function">doHttpReadyStateChange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   <span class="token keyword">if</span> <span class="token punctuation">(</span>XmlHttp<span class="token punctuation">.</span>readyState <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Done"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>备注：</p><p>| 0 (未初始化)   |        对象已建立，但是尚未初始化（尚未调用open方法）        |<br>| ————– | :———————————————————-: |<br>| 1 (初始化)     |                 对象已建立，尚未调用send方法                 |<br>| 2 (发送数据)   |          send方法已调用，但是当前的状态及http头未知          |<br>| 3 (数据传送中) | 已接收部分数据，因为响应及http头不全，这时通过responseBody和responseText获取部分数据会出现错误 |<br>| 4 (完成)       | 数据接收完毕,此时可以通过通过responseBody和responseText获取完整的回应数据 |</p></li><li><h5 id="open"><a href="#open" class="headerlink" title="open"></a>open</h5><p>创建一个新的http请求，并指定此请求的方法、URL以及验证信息</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span><span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> book <span class="token operator">=</span> xmlhttp<span class="token punctuation">.</span>responseXML<span class="token punctuation">.</span><span class="token function">selectSingleNode</span><span class="token punctuation">(</span><span class="token string">"//book[@id='bk101']"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>book<span class="token punctuation">.</span>xml<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>open()语法：</p><pre class=" language-js"><code class="language-js">oXMLHttpRequest<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>bstrMethod<span class="token punctuation">,</span> bstrUrl<span class="token punctuation">,</span> varAsync<span class="token punctuation">,</span> bstrUser<span class="token punctuation">,</span> bstrPassword<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>1、bstrMethod</p><pre><code>http方法，例如：POST、GET、PUT及PROPFIND。大小写不敏感。</code></pre><p>​     <strong>如果用 POST 请求向服务器发送数据，需要将“Content-type” 的首部设置为“application/x-www-form-urlencoded”.它会告知服务器正在发送数据，并且数据已经 符合URL编码了</strong></p><pre class=" language-js"><code class="language-js">ajax<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span><span class="token string">"application/x-www-form-urlencoded"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>2、bstrUrl</p><pre><code>请求的URL地址，可以为绝对地址也可以为相对地址。 </code></pre><p>3、varAsync[可选]</p><pre><code>布尔型，指定此请求是否为异步方式，默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数。 </code></pre><p>4、bstrUser[可选]</p><pre><code>如果服务器需要验证，此处指定用户名，如果未指定，当服务器需要验证时，会弹出验证窗口。 </code></pre><p>5、bstrPassword[可选]</p><pre><code>验证信息中的密码部分，如果用户名为空，则此值将被忽略。 </code></pre></li><li><h5 id="send"><a href="#send" class="headerlink" title="send"></a>send</h5><p>发送请求到http服务器并接收回应</p><pre class=" language-js"><code class="language-js">xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/sample.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>responseXML<span class="token punctuation">.</span>xml<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>1、open 方法定义了 Ajax 请求的一些细节。send 方法可为已经待命的请求发送指令</p><p>2、data：将要传递给服务器的字符串。</p><p>3、若选用的是 GET 请求，则不会发送任何数据， 给 send 方法传递 null 即可：request.send(null);</p><p>4、当向send()方法提供参数时，要确保open()中指定的方法是POST，如果没有数据作为请求体的一部分发送，则使用null</p></li></ol><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><h4 id="方式1（利用js原生）"><a href="#方式1（利用js原生）" class="headerlink" title="方式1（利用js原生）"></a>方式1（利用js原生）</h4><pre class=" language-js"><code class="language-js"> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>        type<span class="token punctuation">:</span><span class="token string">"post"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//请求方式</span>        url<span class="token punctuation">:</span><span class="token string">"data.jsp"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//请求地址</span>        data<span class="token punctuation">:</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//传输的数据，参数</span>        success<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//服务器返回的话（数据）</span>        <span class="token keyword">var</span> jdata <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//data.trim()是去除返回数据的空格</span>        jdata <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token operator">+</span> jdata <span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h4 id="方式2（利用jQuery）"><a href="#方式2（利用jQuery）" class="headerlink" title="方式2（利用jQuery）"></a>方式2（利用jQuery）</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> object <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">parseJSON</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaWeb </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Ajax </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Maven</title>
       <link href="/2019/02/20/Maven/"/>
       <url>/2019/02/20/Maven/</url>
@@ -73,6 +48,31 @@
         <tags>
             
             <tag> Maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Ajax&amp;json</title>
+      <link href="/2019/02/20/Ajax/"/>
+      <url>/2019/02/20/Ajax/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Ajax-json"><a href="#Ajax-json" class="headerlink" title="Ajax+json"></a>Ajax+json</h2><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><h4 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h4><p>​    在用户与服务器之间引入一个中间媒介，从而消除了网络交互过程中的处理—等待—处理—等待缺点</p><h4 id="缺陷："><a href="#缺陷：" class="headerlink" title="缺陷："></a>缺陷：</h4><ol><li>需要测试浏览器的支持</li><li>网页的后退功能是失效的，需要明显的提示用户“数据已更新”</li><li>手机设备，支持不是很友好</li></ol><h4 id="对象（重要）"><a href="#对象（重要）" class="headerlink" title="对象（重要）"></a>对象（重要）</h4><ol><li><h5 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h5><p>提供客户端同HTTP服务器通讯的协议</p><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//IE</span><span class="token keyword">var</span> xmlHttpReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"MSXML2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlHttpReq<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非IE</span><span class="token keyword">var</span> xmlHttpReq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlHttpReq<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlHttpReq<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li><li><h5 id="onreadystatechange"><a href="#onreadystatechange" class="headerlink" title="onreadystatechange"></a>onreadystatechange</h5><p>指定当readyState属性改变时的事件处理句柄</p><pre class=" language-JS"><code class="language-JS">var xmlhttp=null;function PostOrder(xmldoc){  var xmlhttp = new ActiveXObject("Msxml2.XMLHTTP.5.0");  xmlhttp.Open("POST", "http://myserver/orders/processorder.asp", false);   xmlhttp.onreadystatechange= HandleStateChange;  xmlhttp.Send(xmldoc);  myButton.disabled = true;}function HandleStateChange(){  if (xmlhttp.readyState == 4)  {    myButton.disabled = false;    alert("Result = " + xmlhttp.responseXML.xml);  }}</code></pre></li><li><h5 id="status"><a href="#status" class="headerlink" title="status"></a>status</h5><p>返回当前请求的http状态码</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>常用状态码以及含义：</p><ol><li>404  没找到页面(not found)</li><li>403  禁止访问(forbidden)</li><li>500  内部服务器出错(internal service error)</li><li>200  一切正常(ok)</li><li>304 没有被修改(not modified)(服务器返回304状态，表示源文件没有被修改 )</li></ol></li><li><h5 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h5><p>返回XMLHTTP请求的当前状态</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> XmlHttp<span class="token punctuation">;</span>XmlHttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">function</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   XmlHttp<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> doHttpReadyStateChange<span class="token punctuation">;</span>   XmlHttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/sample.xml"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   XmlHttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function">doHttpReadyStateChange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   <span class="token keyword">if</span> <span class="token punctuation">(</span>XmlHttp<span class="token punctuation">.</span>readyState <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Done"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><p>备注：</p><p>| 0 (未初始化)   |        对象已建立，但是尚未初始化（尚未调用open方法）        |<br>| ————– | :———————————————————-: |<br>| 1 (初始化)     |                 对象已建立，尚未调用send方法                 |<br>| 2 (发送数据)   |          send方法已调用，但是当前的状态及http头未知          |<br>| 3 (数据传送中) | 已接收部分数据，因为响应及http头不全，这时通过responseBody和responseText获取部分数据会出现错误 |<br>| 4 (完成)       | 数据接收完毕,此时可以通过通过responseBody和responseText获取完整的回应数据 |</p></li><li><h5 id="open"><a href="#open" class="headerlink" title="open"></a>open</h5><p>创建一个新的http请求，并指定此请求的方法、URL以及验证信息</p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span><span class="token string">"http://localhost/books.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> book <span class="token operator">=</span> xmlhttp<span class="token punctuation">.</span>responseXML<span class="token punctuation">.</span><span class="token function">selectSingleNode</span><span class="token punctuation">(</span><span class="token string">"//book[@id='bk101']"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>book<span class="token punctuation">.</span>xml<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>open()语法：</p><pre class=" language-js"><code class="language-js">oXMLHttpRequest<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>bstrMethod<span class="token punctuation">,</span> bstrUrl<span class="token punctuation">,</span> varAsync<span class="token punctuation">,</span> bstrUser<span class="token punctuation">,</span> bstrPassword<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>1、bstrMethod</p><pre><code>http方法，例如：POST、GET、PUT及PROPFIND。大小写不敏感。</code></pre><p>​     <strong>如果用 POST 请求向服务器发送数据，需要将“Content-type” 的首部设置为“application/x-www-form-urlencoded”.它会告知服务器正在发送数据，并且数据已经 符合URL编码了</strong></p><pre class=" language-js"><code class="language-js">ajax<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span><span class="token string">"application/x-www-form-urlencoded"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>2、bstrUrl</p><pre><code>请求的URL地址，可以为绝对地址也可以为相对地址。 </code></pre><p>3、varAsync[可选]</p><pre><code>布尔型，指定此请求是否为异步方式，默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数。 </code></pre><p>4、bstrUser[可选]</p><pre><code>如果服务器需要验证，此处指定用户名，如果未指定，当服务器需要验证时，会弹出验证窗口。 </code></pre><p>5、bstrPassword[可选]</p><pre><code>验证信息中的密码部分，如果用户名为空，则此值将被忽略。 </code></pre></li><li><h5 id="send"><a href="#send" class="headerlink" title="send"></a>send</h5><p>发送请求到http服务器并接收回应</p><pre class=" language-js"><code class="language-js">xmlhttp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Msxml2.XMLHTTP.3.0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://localhost/sample.xml"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>xmlhttp<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span>xmlhttp<span class="token punctuation">.</span>responseXML<span class="token punctuation">.</span>xml<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>1、open 方法定义了 Ajax 请求的一些细节。send 方法可为已经待命的请求发送指令</p><p>2、data：将要传递给服务器的字符串。</p><p>3、若选用的是 GET 请求，则不会发送任何数据， 给 send 方法传递 null 即可：request.send(null);</p><p>4、当向send()方法提供参数时，要确保open()中指定的方法是POST，如果没有数据作为请求体的一部分发送，则使用null</p></li></ol><h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><h4 id="方式1（利用js原生）"><a href="#方式1（利用js原生）" class="headerlink" title="方式1（利用js原生）"></a>方式1（利用js原生）</h4><pre class=" language-js"><code class="language-js"> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>        type<span class="token punctuation">:</span><span class="token string">"post"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//请求方式</span>        url<span class="token punctuation">:</span><span class="token string">"data.jsp"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//请求地址</span>        data<span class="token punctuation">:</span>params<span class="token punctuation">,</span><span class="token comment" spellcheck="true">//传输的数据，参数</span>        success<span class="token punctuation">:</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//服务器返回的话（数据）</span>        <span class="token keyword">var</span> jdata <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//data.trim()是去除返回数据的空格</span>        jdata <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token operator">+</span> jdata <span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h4 id="方式2（利用jQuery）"><a href="#方式2（利用jQuery）" class="headerlink" title="方式2（利用jQuery）"></a>方式2（利用jQuery）</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> object <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">parseJSON</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaWeb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ajax </tag>
             
         </tags>
       
@@ -156,25 +156,23 @@
     
     
     <entry>
-      <title>GitToGithub</title>
-      <link href="/2018/09/07/GitToGithub/"/>
-      <url>/2018/09/07/GitToGithub/</url>
+      <title>SpringMVC</title>
+      <link href="/2018/09/20/SpringMVC/"/>
+      <url>/2018/09/20/SpringMVC/</url>
       
-        <content type="html"><![CDATA[<h3 id="GitToGithub"><a href="#GitToGithub" class="headerlink" title="GitToGithub"></a>GitToGithub</h3><h4 id="0、新建文件夹"><a href="#0、新建文件夹" class="headerlink" title="0、新建文件夹"></a>0、新建文件夹</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036553006.png" alt="1559036553006"></p><h4 id="1、在此文件夹右键Git-Bash-Here，输入命令"><a href="#1、在此文件夹右键Git-Bash-Here，输入命令" class="headerlink" title="1、在此文件夹右键Git Bash Here，输入命令"></a>1、在此文件夹右键Git Bash Here，输入命令</h4><pre class=" language-Java"><code class="language-Java">git init</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036600072.png" alt="1559036600072"></p><p>此步操作为初始化git工作区间</p><h4 id="2、将需要上传的项目复制到工作区间"><a href="#2、将需要上传的项目复制到工作区间" class="headerlink" title="2、将需要上传的项目复制到工作区间"></a>2、将需要上传的项目复制到工作区间</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036752091.png" alt="1559036752091"></p><h4 id="3、输入命令git-status-查看git工作区间的文件变化"><a href="#3、输入命令git-status-查看git工作区间的文件变化" class="headerlink" title="3、输入命令git status 查看git工作区间的文件变化"></a>3、输入命令git status 查看git工作区间的文件变化</h4><pre><code>git status</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036885875.png" alt="1559036885875"></p><h4 id="4、输入命令git-add-将文件加入到暂存区"><a href="#4、输入命令git-add-将文件加入到暂存区" class="headerlink" title="4、输入命令git add . 将文件加入到暂存区"></a>4、输入命令git add . 将文件加入到暂存区</h4><pre><code>git add .</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036995464.png" alt="1559036995464"></p><h4 id="5、将文件提交到本地仓库"><a href="#5、将文件提交到本地仓库" class="headerlink" title="5、将文件提交到本地仓库"></a>5、将文件提交到本地仓库</h4><pre><code>git commit -m &quot;the first commit&quot;</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037091035.png" alt="1559037091035"></p><h4 id="6、在Github种新建仓库"><a href="#6、在Github种新建仓库" class="headerlink" title="6、在Github种新建仓库"></a>6、在Github种新建仓库</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037194341.png" alt="1559037194341"></p><p>7、复制仓库链接（https链接）</p><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037237509.png" alt="1559037237509"></p><h4 id="8、将本地仓库关联到Github仓库"><a href="#8、将本地仓库关联到Github仓库" class="headerlink" title="8、将本地仓库关联到Github仓库"></a>8、将本地仓库关联到Github仓库</h4><pre><code>git remote add origin https://...</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037332932.png" alt="1559037332932"></p><h4 id="9、将本地仓库同步到GitHub仓库"><a href="#9、将本地仓库同步到GitHub仓库" class="headerlink" title="9、将本地仓库同步到GitHub仓库"></a>9、将本地仓库同步到GitHub仓库</h4><pre><code>git push origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037744888.png" alt="1559037744888"></p><h3 id="一点一点积累"><a href="#一点一点积累" class="headerlink" title="一点一点积累"></a>一点一点积累</h3><p>git拉取远程仓库代码与本地合并：</p><pre><code>git pull origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1562244421283.png" alt="1562244421283"></p>]]></content>
+        <content type="html"><![CDATA[<h4 id="文字描述："><a href="#文字描述：" class="headerlink" title="文字描述："></a>文字描述：</h4><p>1、  用户发送请求至前端控制器DispatcherServlet。</p><p>2、  DispatcherServlet收到请求调用HandlerMapping处理器映射器。</p><p>3、  处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。</p><p>4、  DispatcherServlet调用HandlerAdapter处理器适配器。</p><p>5、  HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。</p><p>6、  Controller执行完成返回ModelAndView。</p><p>7、  HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。</p><p>8、  DispatcherServlet将ModelAndView传给ViewReslover视图解析器。</p><p>9、  ViewReslover解析后返回具体View。</p><p>10、DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。</p><p>11、 DispatcherServlet响应用户。</p><p>组件描述：</p><p><strong>1、前端控制器DispatcherServlet（不需要工程师开发）,由框架提供</strong><br>作用：接收请求，响应结果，相当于转发器，中央处理器。有了dispatcherServlet减少了其它组件之间的耦合度。<br>用户请求到达前端控制器，它就相当于mvc模式中的c，dispatcherServlet是整个流程控制的中心，由它调用其它组件处理用户的请求，dispatcherServlet的存在降低了组件之间的耦合性。</p><p><strong>2、处理器映射器HandlerMapping(不需要工程师开发),由框架提供</strong><br>作用：根据请求的url查找Handler<br>HandlerMapping负责根据用户请求找到Handler即处理器，springmvc提供了不同的映射器实现不同的映射方式，例如：配置文件方式，实现接口方式，注解方式等。</p><p><strong>3、处理器适配器HandlerAdapter</strong><br>作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler<br>通过HandlerAdapter对处理器进行执行，这是适配器模式的应用，通过扩展适配器可以对更多类型的处理器进行执行。</p><p><strong>4、处理器Handler(需要工程师开发)</strong><br><strong>注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler</strong><br>Handler 是继DispatcherServlet前端控制器的后端控制器，在DispatcherServlet的控制下Handler对具体的用户请求进行处理。<br>由于Handler涉及到具体的用户业务请求，所以一般情况需要工程师根据业务需求开发Handler。</p><p><strong>5、视图解析器View resolver(不需要工程师开发),由框架提供</strong><br>作用：进行视图解析，根据逻辑视图名解析成真正的视图（view）<br>View Resolver负责将处理结果生成View视图，View Resolver首先根据逻辑视图名解析成物理视图名即具体的页面地址，再生成View视图对象，最后对View进行渲染将处理结果通过页面展示给用户。 springmvc框架提供了很多的View视图类型，包括：jstlView、freemarkerView、pdfView等。<br>一般情况下需要通过页面标签或页面模版技术将模型数据通过页面展示给用户，需要由工程师根据业务需求开发具体的页面。</p><p><strong>6、视图View(需要工程师开发jsp…)</strong><br>View是一个接口，实现类支持不同的View类型（jsp、freemarker、pdf…）</p>]]></content>
       
       
       <categories>
           
-          <category> Git&amp;Github </category>
+          <category> Spring </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Git </tag>
-            
-            <tag> Github </tag>
+            <tag> SpringMVC </tag>
             
         </tags>
       
@@ -208,6 +206,33 @@
     
     
     <entry>
+      <title>GitToGithub</title>
+      <link href="/2018/09/07/GitToGithub/"/>
+      <url>/2018/09/07/GitToGithub/</url>
+      
+        <content type="html"><![CDATA[<h3 id="GitToGithub"><a href="#GitToGithub" class="headerlink" title="GitToGithub"></a>GitToGithub</h3><h4 id="0、新建文件夹"><a href="#0、新建文件夹" class="headerlink" title="0、新建文件夹"></a>0、新建文件夹</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036553006.png" alt="1559036553006"></p><h4 id="1、在此文件夹右键Git-Bash-Here，输入命令"><a href="#1、在此文件夹右键Git-Bash-Here，输入命令" class="headerlink" title="1、在此文件夹右键Git Bash Here，输入命令"></a>1、在此文件夹右键Git Bash Here，输入命令</h4><pre class=" language-Java"><code class="language-Java">git init</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036600072.png" alt="1559036600072"></p><p>此步操作为初始化git工作区间</p><h4 id="2、将需要上传的项目复制到工作区间"><a href="#2、将需要上传的项目复制到工作区间" class="headerlink" title="2、将需要上传的项目复制到工作区间"></a>2、将需要上传的项目复制到工作区间</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036752091.png" alt="1559036752091"></p><h4 id="3、输入命令git-status-查看git工作区间的文件变化"><a href="#3、输入命令git-status-查看git工作区间的文件变化" class="headerlink" title="3、输入命令git status 查看git工作区间的文件变化"></a>3、输入命令git status 查看git工作区间的文件变化</h4><pre><code>git status</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036885875.png" alt="1559036885875"></p><h4 id="4、输入命令git-add-将文件加入到暂存区"><a href="#4、输入命令git-add-将文件加入到暂存区" class="headerlink" title="4、输入命令git add . 将文件加入到暂存区"></a>4、输入命令git add . 将文件加入到暂存区</h4><pre><code>git add .</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559036995464.png" alt="1559036995464"></p><h4 id="5、将文件提交到本地仓库"><a href="#5、将文件提交到本地仓库" class="headerlink" title="5、将文件提交到本地仓库"></a>5、将文件提交到本地仓库</h4><pre><code>git commit -m &quot;the first commit&quot;</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037091035.png" alt="1559037091035"></p><h4 id="6、在Github种新建仓库"><a href="#6、在Github种新建仓库" class="headerlink" title="6、在Github种新建仓库"></a>6、在Github种新建仓库</h4><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037194341.png" alt="1559037194341"></p><p>7、复制仓库链接（https链接）</p><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037237509.png" alt="1559037237509"></p><h4 id="8、将本地仓库关联到Github仓库"><a href="#8、将本地仓库关联到Github仓库" class="headerlink" title="8、将本地仓库关联到Github仓库"></a>8、将本地仓库关联到Github仓库</h4><pre><code>git remote add origin https://...</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037332932.png" alt="1559037332932"></p><h4 id="9、将本地仓库同步到GitHub仓库"><a href="#9、将本地仓库同步到GitHub仓库" class="headerlink" title="9、将本地仓库同步到GitHub仓库"></a>9、将本地仓库同步到GitHub仓库</h4><pre><code>git push origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1559037744888.png" alt="1559037744888"></p><h3 id="一点一点积累"><a href="#一点一点积累" class="headerlink" title="一点一点积累"></a>一点一点积累</h3><p>git拉取远程仓库代码与本地合并：</p><pre><code>git pull origin master</code></pre><p><img src="C:\Users\Goffy\AppData\Roaming\Typora\typora-user-images\1562244421283.png" alt="1562244421283"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git&amp;Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> Github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MyBatis</title>
       <link href="/2018/08/02/MyBatis/"/>
       <url>/2018/08/02/MyBatis/</url>
@@ -233,31 +258,6 @@
     
     
     <entry>
-      <title>ConcurrentHashMap</title>
-      <link href="/2018/06/12/ConcurrentHashMap/"/>
-      <url>/2018/06/12/ConcurrentHashMap/</url>
-      
-        <content type="html"><![CDATA[<p>ConcurrentHashMap这个类在java.lang.current包中，这个包中的类都是线程安全的。</p><p>ConcurrentHashMap底层存储数据的结构与1.8的HashMap是一样的，都是数组+链表（或红黑树）的结构。</p><p>在日常的开发中，我们最长用到的键值对存储结构的是HashMap，但是我们知道，这个类是非线程安全的，<strong>在高并发的场景下，在进行put操作的时候有可能进入死循环从而使服务器的cpu使用率达到100%</strong>；</p><p>sun公司因此也给出了与之对应的线程安全的类。在jdk1.5以前，使用的是HashTable，这个类为了保证线程安全，在每个类中都添加了synchronized关键字，而想而知在高并发的情景下相率是非常低下的。</p><p>为了解决HashTable效率低下的问题，官网在jdk1.5后推出了ConcurrentHashMap来替代饱受诟病的HashTable。</p><p>jdk1.5后ConcurrentHashMap使用了分段锁的技术。在整个数组中被分为多个segment，每次get，put，remove操作时就锁住目标元素所在的segment中，因此segment与segment之前是可以并发操作的，上述就是jdk1.5后实现线程安全的大致思想。</p><p>但是，从描述中可以看出一个问题，就是如果出现比较机端的情况，所有的数据都集中在一个segment中的话，在并发的情况下相当于锁住了全表，这种情况下其实是和HashTable的效率出不多的，但总体来说相较于HashTable，效率还是有了很大的提升。</p><p>jdk1.8后，ConcurrentHashMap摒弃了segment的思想，转而使用cas+synchronized组合的方式来实现并发下的线程安全的，这种实现方式比1.5的效率又有了比较大的提升。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaSE </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JavaCollection </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>==AndEq</title>
       <link href="/2018/06/12/==AndEqulas/"/>
       <url>/2018/06/12/==AndEqulas/</url>
@@ -275,6 +275,31 @@
         <tags>
             
             <tag> String </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ConcurrentHashMap</title>
+      <link href="/2018/06/12/ConcurrentHashMap/"/>
+      <url>/2018/06/12/ConcurrentHashMap/</url>
+      
+        <content type="html"><![CDATA[<p>ConcurrentHashMap这个类在java.lang.current包中，这个包中的类都是线程安全的。</p><p>ConcurrentHashMap底层存储数据的结构与1.8的HashMap是一样的，都是数组+链表（或红黑树）的结构。</p><p>在日常的开发中，我们最长用到的键值对存储结构的是HashMap，但是我们知道，这个类是非线程安全的，<strong>在高并发的场景下，在进行put操作的时候有可能进入死循环从而使服务器的cpu使用率达到100%</strong>；</p><p>sun公司因此也给出了与之对应的线程安全的类。在jdk1.5以前，使用的是HashTable，这个类为了保证线程安全，在每个类中都添加了synchronized关键字，而想而知在高并发的情景下相率是非常低下的。</p><p>为了解决HashTable效率低下的问题，官网在jdk1.5后推出了ConcurrentHashMap来替代饱受诟病的HashTable。</p><p>jdk1.5后ConcurrentHashMap使用了分段锁的技术。在整个数组中被分为多个segment，每次get，put，remove操作时就锁住目标元素所在的segment中，因此segment与segment之前是可以并发操作的，上述就是jdk1.5后实现线程安全的大致思想。</p><p>但是，从描述中可以看出一个问题，就是如果出现比较机端的情况，所有的数据都集中在一个segment中的话，在并发的情况下相当于锁住了全表，这种情况下其实是和HashTable的效率出不多的，但总体来说相较于HashTable，效率还是有了很大的提升。</p><p>jdk1.8后，ConcurrentHashMap摒弃了segment的思想，转而使用cas+synchronized组合的方式来实现并发下的线程安全的，这种实现方式比1.5的效率又有了比较大的提升。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaCollection </tag>
             
         </tags>
       
@@ -358,6 +383,31 @@
     
     
     <entry>
+      <title>IO/NIO</title>
+      <link href="/2018/02/20/JavaIO/"/>
+      <url>/2018/02/20/JavaIO/</url>
+      
+        <content type="html"><![CDATA[<h3 id="JavaIO-NIO"><a href="#JavaIO-NIO" class="headerlink" title="JavaIO/NIO"></a>JavaIO/NIO</h3><h3 id="IO分类"><a href="#IO分类" class="headerlink" title="IO分类"></a>IO分类</h3><p>在Java.io包下主要包括两种流输入、输出两种IO流，每种输入、输出流又分为字节流和字符流两大类。其中字节流以字节单位来处理输入、输出操作。而字符流则以字符处理输入、输出操作。</p><ul><li><p>字符流</p><ul><li>Reader<ul><li>BufferedReader</li><li>InputStreamReader</li><li>StringReader</li><li>CharArrayReader</li><li>FileReader</li><li>…</li></ul></li><li>Writer<ul><li>BufferedWriter</li><li>OutputStreamWriter</li><li>StringWriter</li><li>CharArrayWriter</li><li>FileWriter</li><li>…</li></ul></li></ul></li><li><p>字节流</p><ul><li>InputStream<ul><li>FileInputStream</li><li>StringBufferInputStream</li><li>ByteArrayInputStream</li><li>…</li></ul></li><li>OutputStream<ul><li>FileOutputStream</li><li>StringBufferOutputStream</li><li>ByteArrayOutputStream</li><li>…</li></ul></li></ul><h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>Non-blocking I/O</p><p>一种同步非阻塞的I/O模型，也是I/O多路复用的基础，已经被越来越多地应用到大型应用服务器，成为解决高并发与大量连接、I/O处理问题的有效方式</p><p>核心对象：</p><ul><li>Channel （通道）</li><li>Buffer （缓冲）</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaSE </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ArrayList.asList()</title>
       <link href="/2018/02/20/Arrays.asList/"/>
       <url>/2018/02/20/Arrays.asList/</url>
@@ -400,31 +450,6 @@
         <tags>
             
             <tag> servlet </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>IO/NIO</title>
-      <link href="/2018/02/20/JavaIO/"/>
-      <url>/2018/02/20/JavaIO/</url>
-      
-        <content type="html"><![CDATA[<h3 id="JavaIO-NIO"><a href="#JavaIO-NIO" class="headerlink" title="JavaIO/NIO"></a>JavaIO/NIO</h3><h3 id="IO分类"><a href="#IO分类" class="headerlink" title="IO分类"></a>IO分类</h3><p>在Java.io包下主要包括两种流输入、输出两种IO流，每种输入、输出流又分为字节流和字符流两大类。其中字节流以字节单位来处理输入、输出操作。而字符流则以字符处理输入、输出操作。</p><ul><li><p>字符流</p><ul><li>Reader<ul><li>BufferedReader</li><li>InputStreamReader</li><li>StringReader</li><li>CharArrayReader</li><li>FileReader</li><li>…</li></ul></li><li>Writer<ul><li>BufferedWriter</li><li>OutputStreamWriter</li><li>StringWriter</li><li>CharArrayWriter</li><li>FileWriter</li><li>…</li></ul></li></ul></li><li><p>字节流</p><ul><li>InputStream<ul><li>FileInputStream</li><li>StringBufferInputStream</li><li>ByteArrayInputStream</li><li>…</li></ul></li><li>OutputStream<ul><li>FileOutputStream</li><li>StringBufferOutputStream</li><li>ByteArrayOutputStream</li><li>…</li></ul></li></ul><h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>Non-blocking I/O</p><p>一种同步非阻塞的I/O模型，也是I/O多路复用的基础，已经被越来越多地应用到大型应用服务器，成为解决高并发与大量连接、I/O处理问题的有效方式</p><p>核心对象：</p><ul><li>Channel （通道）</li><li>Buffer （缓冲）</li></ul></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> JavaSE </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> IO </tag>
             
         </tags>
       
